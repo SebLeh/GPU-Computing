@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\Game on\GPU-Computing\assignment 1\Assignment1\CAssignment1.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Game on\GPU-Computing\assignment 1\Assignment1\CMatrixRotateTask.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Game on\GPU-Computing\assignment 1\Assignment1\CSimpleArraysTask.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Game on\GPU-Computing\assignment 1\Assignment1\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\Game on\GPU-Computing\assignment 1\Assignment1\CAssignment1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Game on\GPU-Computing\assignment 1\Assignment1\CMatrixRotateTask.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Game on\GPU-Computing\assignment 1\Assignment1\CSimpleArraysTask.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Game on\GPU-Computing\assignment 1\Assignment1\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\Game on\GPU-Computing\assignment 1\Assignment1\MatrixRot.cl" />
+    <None Include="C:\Users\Game on\GPU-Computing\assignment 1\Assignment1\VectorAdd.cl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{31425167-ABCB-38DE-8D22-CA6EEF3CB592}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{58EA0D92-4D14-3FAA-B671-B973279DCAD1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
