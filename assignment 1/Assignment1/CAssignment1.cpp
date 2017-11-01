@@ -20,7 +20,7 @@ bool CAssignment1::DoCompute()
 	// Task 1: simple array addition.
 	cout << "Running vector addition example..." << endl << endl;
 	{
-		size_t localWorkSize[3] = {256, 1, 1};
+		size_t localWorkSize[5] = {64, 128, 256, 512, 1024};
 		CSimpleArraysTask task(1048576);
 		RunComputeTask(task, localWorkSize);
 	}

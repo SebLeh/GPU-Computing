@@ -9,6 +9,10 @@ GPU Computing / GPGPU Praktikum source code.
 #include <iostream>
 #include <fstream>
 
+// including signal for "debugging"
+#include <csignal>
+#include <signal.h>
+
 using namespace std;
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -17,7 +21,17 @@ using namespace std;
 size_t CLUtil::GetGlobalWorkSize(size_t DataElemCount, size_t LocalWorkSize)
 {
 	// TO DO: replace with correct work group sizing code here (Sec. 4.6)
-	return 1;
+	//return 1;
+
+	size_t r = DataElemCount % LocalWorkSize;
+	if (r == 0)
+	{
+		return DataElemCount;
+	}
+	else
+	{
+		return DataElemCount + LocalWorkSize - r;
+	}
 }
 
 bool CLUtil::LoadProgramSourceToMemory(const std::string& Path, std::string& SourceCode)
@@ -49,9 +63,25 @@ cl_program CLUtil::BuildCLProgramFromMemory(cl_device_id Device, cl_context Cont
 	// Ignore the last parameter CompileOptions in assignment 1
 	// This may be used later to pass flags and macro definitions to the OpenCL compiler
 
-	cl_program prog = nullptr;
+	const char* src = SourceCode.c_str();
+	size_t length = SourceCode.size();
+	cl_int clError;
+	cl_program prog = clCreateProgramWithSource(Context, 1, &src, &length, &clError);
+	if (CL_SUCCESS != clError)
+	{
+		cerr << "Failed to create CL program from source";
+		return nullptr;
+	}
 
-
+	clError = clBuildProgram(prog, 1, &Device, NULL, NULL, NULL);
+	if (CL_SUCCESS != clError)
+	{
+		PrintBuildLog(prog, Device);
+		cerr << "Failed to build CL programm.";
+		SAFE_RELEASE_PROGRAM(prog);
+		return nullptr;
+	}
+	
 	return prog;
 }
 
@@ -82,7 +112,31 @@ double CLUtil::ProfileKernel(cl_command_queue CommandQueue, cl_kernel Kernel, cl
 		const size_t* pGlobalWorkSize, const size_t* pLocalWorkSize, int NIterations)
 {
 	// TO DO: Replace with kernel profiling code here
-	return 0.0;
+	//return 0.0;
+
+	CTimer timer;
+	cl_int clError = clFinish(CommandQueue);
+
+	timer.Start();
+
+	for (unsigned int i = 0; i < NIterations; i++)
+	{
+		clError |= clEnqueueNDRangeKernel(CommandQueue, Kernel, Dimensions, NULL, pGlobalWorkSize, pLocalWorkSize, 0, NULL, NULL);
+	}
+
+	clError |= clFinish(CommandQueue);
+
+	timer.Stop();
+
+	if (clError != CL_SUCCESS)
+	{
+		cout << "kernel execution error" << endl;
+		return -1;
+	}
+
+	double ms = timer.GetElapsedMilliseconds() / (double)NIterations;
+
+	return ms;
 }
 
 #define CL_ERROR(x) case (x): return #x;
