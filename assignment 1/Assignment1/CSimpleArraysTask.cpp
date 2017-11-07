@@ -95,8 +95,11 @@ void CSimpleArraysTask::ReleaseResources()
 
 	// TO DO: free resources on the GPU
 	clReleaseMemObject(m_dA);
+	SAFE_DELETE_ARRAY(m_dA);
 	clReleaseMemObject(m_dB);
+	SAFE_DELETE_ARRAY(m_dB);
 	clReleaseMemObject(m_dC);
+	SAFE_DELETE_ARRAY(m_dC);
 }
 
 void CSimpleArraysTask::ComputeCPU()

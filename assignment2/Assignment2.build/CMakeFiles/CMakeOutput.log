@@ -1,0 +1,623 @@
+The system is: Windows - 10.0.15063 - AMD64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler:  
+Build flags: 
+Id flags:  
+
+The output was:
+0
+Microsoft (R)-Buildmodul, Version 15.4.8.50001 f�r .NET Framework
+Copyright (C) Microsoft Corporation. Alle Rechte vorbehalten.
+
+Der Buildvorgang wurde am 06.11.2017 16:04:48 gestartet.
+Projekt "C:\Users\Game on\GPU-Computing\assignment2\Assignment2.build\CMakeFiles\3.9.4\CompilerIdC\CompilerIdC.vcxproj" auf Knoten "1" (Standardziele).
+PrepareForBuild:
+  Das Verzeichnis "Debug\" wird erstellt.
+  Das Verzeichnis "Debug\CompilerIdC.tlog\" wird erstellt.
+InitializeBuildStatus:
+  "Debug\CompilerIdC.tlog\unsuccessfulbuild" wird erstellt, da "AlwaysCreate" angegeben wurde.
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Tools\MSVC\14.11.25503\bin\HostX86\x86\CL.exe /c /nologo /W0 /WX- /diagnostics:classic /Od /Oy- /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc141.pdb" /Gd /TC /analyze- /errorReport:queue CMakeCCompilerId.c
+  CMakeCCompilerId.c
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Tools\MSVC\14.11.25503\bin\HostX86\x86\link.exe /ERRORREPORT:QUEUE /OUT:".\CompilerIdC.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\CompilerIdC.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\CompilerIdC.lib" /MACHINE:X86 /SAFESEH Debug\CMakeCCompilerId.obj
+  CompilerIdC.vcxproj -> C:\Users\Game on\GPU-Computing\assignment2\Assignment2.build\CMakeFiles\3.9.4\CompilerIdC\.\CompilerIdC.exe
+PostBuildEvent:
+  for %%i in (cl.exe) do @echo CMAKE_C_COMPILER=%%~$PATH:i
+  :VCEnd
+  CMAKE_C_COMPILER=C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Tools\MSVC\14.11.25503\bin\Hostx86\x86\cl.exe
+FinalizeBuildStatus:
+  Die Datei "Debug\CompilerIdC.tlog\unsuccessfulbuild" wird gel�scht.
+  Aktualisieren des Timestamps von "Debug\CompilerIdC.tlog\CompilerIdC.lastbuildstate".
+Die Erstellung von Projekt "C:\Users\Game on\GPU-Computing\assignment2\Assignment2.build\CMakeFiles\3.9.4\CompilerIdC\CompilerIdC.vcxproj" ist abgeschlossen (Standardziele).
+
+Der Buildvorgang wurde erfolgreich ausgef�hrt.
+    0 Warnung(en)
+    0 Fehler
+
+Verstrichene Zeit 00:00:00.78
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.vcxproj"
+
+The C compiler identification is MSVC, found in "C:/Users/Game on/GPU-Computing/assignment2/Assignment2.build/CMakeFiles/3.9.4/CompilerIdC/CompilerIdC.exe"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler:  
+Build flags: 
+Id flags:  
+
+The output was:
+0
+Microsoft (R)-Buildmodul, Version 15.4.8.50001 f�r .NET Framework
+Copyright (C) Microsoft Corporation. Alle Rechte vorbehalten.
+
+Der Buildvorgang wurde am 06.11.2017 16:04:49 gestartet.
+Projekt "C:\Users\Game on\GPU-Computing\assignment2\Assignment2.build\CMakeFiles\3.9.4\CompilerIdCXX\CompilerIdCXX.vcxproj" auf Knoten "1" (Standardziele).
+PrepareForBuild:
+  Das Verzeichnis "Debug\" wird erstellt.
+  Das Verzeichnis "Debug\CompilerIdCXX.tlog\" wird erstellt.
+InitializeBuildStatus:
+  "Debug\CompilerIdCXX.tlog\unsuccessfulbuild" wird erstellt, da "AlwaysCreate" angegeben wurde.
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Tools\MSVC\14.11.25503\bin\HostX86\x86\CL.exe /c /nologo /W0 /WX- /diagnostics:classic /Od /Oy- /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc141.pdb" /Gd /TP /analyze- /errorReport:queue CMakeCXXCompilerId.cpp
+  CMakeCXXCompilerId.cpp
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Tools\MSVC\14.11.25503\bin\HostX86\x86\link.exe /ERRORREPORT:QUEUE /OUT:".\CompilerIdCXX.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\CompilerIdCXX.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\CompilerIdCXX.lib" /MACHINE:X86 /SAFESEH Debug\CMakeCXXCompilerId.obj
+  CompilerIdCXX.vcxproj -> C:\Users\Game on\GPU-Computing\assignment2\Assignment2.build\CMakeFiles\3.9.4\CompilerIdCXX\.\CompilerIdCXX.exe
+PostBuildEvent:
+  for %%i in (cl.exe) do @echo CMAKE_CXX_COMPILER=%%~$PATH:i
+  :VCEnd
+  CMAKE_CXX_COMPILER=C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Tools\MSVC\14.11.25503\bin\Hostx86\x86\cl.exe
+FinalizeBuildStatus:
+  Die Datei "Debug\CompilerIdCXX.tlog\unsuccessfulbuild" wird gel�scht.
+  Aktualisieren des Timestamps von "Debug\CompilerIdCXX.tlog\CompilerIdCXX.lastbuildstate".
+Die Erstellung von Projekt "C:\Users\Game on\GPU-Computing\assignment2\Assignment2.build\CMakeFiles\3.9.4\CompilerIdCXX\CompilerIdCXX.vcxproj" ist abgeschlossen (Standardziele).
+
+Der Buildvorgang wurde erfolgreich ausgef�hrt.
+    0 Warnung(en)
+    0 Fehler
+
+Verstrichene Zeit 00:00:00.55
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.vcxproj"
+
+The CXX compiler identification is MSVC, found in "C:/Users/Game on/GPU-Computing/assignment2/Assignment2.build/CMakeFiles/3.9.4/CompilerIdCXX/CompilerIdCXX.exe"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: C:/Users/Game on/GPU-Computing/assignment2/Assignment2.build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise/MSBuild/15.0/Bin/MSBuild.exe" "cmTC_b3d37.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=15.0"
+Microsoft (R)-Buildmodul, Version 15.4.8.50001 für .NET Framework
+Copyright (C) Microsoft Corporation. Alle Rechte vorbehalten.
+
+Der Buildvorgang wurde am 06.11.2017 16:04:50 gestartet.
+Projekt "C:\Users\Game on\GPU-Computing\assignment2\Assignment2.build\CMakeFiles\CMakeTmp\cmTC_b3d37.vcxproj" auf Knoten "1" (Standardziele).
+PrepareForBuild:
+  Das Verzeichnis "cmTC_b3d37.dir\Debug\" wird erstellt.
+  Das Verzeichnis "C:\Users\Game on\GPU-Computing\assignment2\Assignment2.build\CMakeFiles\CMakeTmp\Debug\" wird erstellt.
+  Das Verzeichnis "cmTC_b3d37.dir\Debug\cmTC_b3d37.tlog\" wird erstellt.
+InitializeBuildStatus:
+  "cmTC_b3d37.dir\Debug\cmTC_b3d37.tlog\unsuccessfulbuild" wird erstellt, da "AlwaysCreate" angegeben wurde.
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Tools\MSVC\14.11.25503\bin\HostX86\x86\CL.exe /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_b3d37.dir\Debug\\" /Fd"cmTC_b3d37.dir\Debug\vc141.pdb" /Gd /TC /analyze- /errorReport:queue "C:\Users\Game on\GPU-Computing\assignment2\Assignment2.build\CMakeFiles\CMakeTmp\testCCompiler.c"
+  Microsoft (R) C/C++-Optimierungscompiler Version 19.11.25547 für x86
+  Copyright (C) Microsoft Corporation. Alle Rechte vorbehalten.
+  
+  cl /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_b3d37.dir\Debug\\" /Fd"cmTC_b3d37.dir\Debug\vc141.pdb" /Gd /TC /analyze- /errorReport:queue "C:\Users\Game on\GPU-Computing\assignment2\Assignment2.build\CMakeFiles\CMakeTmp\testCCompiler.c"
+  testCCompiler.c
+  
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Tools\MSVC\14.11.25503\bin\HostX86\x86\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\Game on\GPU-Computing\assignment2\Assignment2.build\CMakeFiles\CMakeTmp\Debug\cmTC_b3d37.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/Game on/GPU-Computing/assignment2/Assignment2.build/CMakeFiles/CMakeTmp/Debug/cmTC_b3d37.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/Game on/GPU-Computing/assignment2/Assignment2.build/CMakeFiles/CMakeTmp/Debug/cmTC_b3d37.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_b3d37.dir\Debug\testCCompiler.obj
+  cmTC_b3d37.vcxproj -> C:\Users\Game on\GPU-Computing\assignment2\Assignment2.build\CMakeFiles\CMakeTmp\Debug\cmTC_b3d37.exe
+FinalizeBuildStatus:
+  Die Datei "cmTC_b3d37.dir\Debug\cmTC_b3d37.tlog\unsuccessfulbuild" wird gelöscht.
+  Aktualisieren des Timestamps von "cmTC_b3d37.dir\Debug\cmTC_b3d37.tlog\cmTC_b3d37.lastbuildstate".
+Die Erstellung von Projekt "C:\Users\Game on\GPU-Computing\assignment2\Assignment2.build\CMakeFiles\CMakeTmp\cmTC_b3d37.vcxproj" ist abgeschlossen (Standardziele).
+
+Der Buildvorgang wurde erfolgreich ausgeführt.
+    0 Warnung(en)
+    0 Fehler
+
+Verstrichene Zeit 00:00:01.05
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: C:/Users/Game on/GPU-Computing/assignment2/Assignment2.build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise/MSBuild/15.0/Bin/MSBuild.exe" "cmTC_60b25.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=15.0"
+Microsoft (R)-Buildmodul, Version 15.4.8.50001 für .NET Framework
+Copyright (C) Microsoft Corporation. Alle Rechte vorbehalten.
+
+Der Buildvorgang wurde am 06.11.2017 16:04:51 gestartet.
+Projekt "C:\Users\Game on\GPU-Computing\assignment2\Assignment2.build\CMakeFiles\CMakeTmp\cmTC_60b25.vcxproj" auf Knoten "1" (Standardziele).
+PrepareForBuild:
+  Das Verzeichnis "cmTC_60b25.dir\Debug\" wird erstellt.
+  Das Verzeichnis "C:\Users\Game on\GPU-Computing\assignment2\Assignment2.build\CMakeFiles\CMakeTmp\Debug\" wird erstellt.
+  Das Verzeichnis "cmTC_60b25.dir\Debug\cmTC_60b25.tlog\" wird erstellt.
+InitializeBuildStatus:
+  "cmTC_60b25.dir\Debug\cmTC_60b25.tlog\unsuccessfulbuild" wird erstellt, da "AlwaysCreate" angegeben wurde.
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Tools\MSVC\14.11.25503\bin\HostX86\x86\CL.exe /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_60b25.dir\Debug\\" /Fd"cmTC_60b25.dir\Debug\vc141.pdb" /Gd /TC /analyze- /errorReport:queue "C:\Program Files\CMake\share\cmake-3.9\Modules\CMakeCCompilerABI.c"
+  Microsoft (R) C/C++-Optimierungscompiler Version 19.11.25547 für x86
+  Copyright (C) Microsoft Corporation. Alle Rechte vorbehalten.
+  
+  cl /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_60b25.dir\Debug\\" /Fd"cmTC_60b25.dir\Debug\vc141.pdb" /Gd /TC /analyze- /errorReport:queue "C:\Program Files\CMake\share\cmake-3.9\Modules\CMakeCCompilerABI.c"
+  CMakeCCompilerABI.c
+  
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Tools\MSVC\14.11.25503\bin\HostX86\x86\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\Game on\GPU-Computing\assignment2\Assignment2.build\CMakeFiles\CMakeTmp\Debug\cmTC_60b25.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/Game on/GPU-Computing/assignment2/Assignment2.build/CMakeFiles/CMakeTmp/Debug/cmTC_60b25.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/Game on/GPU-Computing/assignment2/Assignment2.build/CMakeFiles/CMakeTmp/Debug/cmTC_60b25.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_60b25.dir\Debug\CMakeCCompilerABI.obj
+  cmTC_60b25.vcxproj -> C:\Users\Game on\GPU-Computing\assignment2\Assignment2.build\CMakeFiles\CMakeTmp\Debug\cmTC_60b25.exe
+FinalizeBuildStatus:
+  Die Datei "cmTC_60b25.dir\Debug\cmTC_60b25.tlog\unsuccessfulbuild" wird gelöscht.
+  Aktualisieren des Timestamps von "cmTC_60b25.dir\Debug\cmTC_60b25.tlog\cmTC_60b25.lastbuildstate".
+Die Erstellung von Projekt "C:\Users\Game on\GPU-Computing\assignment2\Assignment2.build\CMakeFiles\CMakeTmp\cmTC_60b25.vcxproj" ist abgeschlossen (Standardziele).
+
+Der Buildvorgang wurde erfolgreich ausgeführt.
+    0 Warnung(en)
+    0 Fehler
+
+Verstrichene Zeit 00:00:00.76
+
+
+Determining if the CXX compiler works passed with the following output:
+Change Dir: C:/Users/Game on/GPU-Computing/assignment2/Assignment2.build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise/MSBuild/15.0/Bin/MSBuild.exe" "cmTC_6ccf1.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=15.0"
+Microsoft (R)-Buildmodul, Version 15.4.8.50001 für .NET Framework
+Copyright (C) Microsoft Corporation. Alle Rechte vorbehalten.
+
+Der Buildvorgang wurde am 06.11.2017 16:04:52 gestartet.
+Projekt "C:\Users\Game on\GPU-Computing\assignment2\Assignment2.build\CMakeFiles\CMakeTmp\cmTC_6ccf1.vcxproj" auf Knoten "1" (Standardziele).
+PrepareForBuild:
+  Das Verzeichnis "cmTC_6ccf1.dir\Debug\" wird erstellt.
+  Das Verzeichnis "C:\Users\Game on\GPU-Computing\assignment2\Assignment2.build\CMakeFiles\CMakeTmp\Debug\" wird erstellt.
+  Das Verzeichnis "cmTC_6ccf1.dir\Debug\cmTC_6ccf1.tlog\" wird erstellt.
+InitializeBuildStatus:
+  "cmTC_6ccf1.dir\Debug\cmTC_6ccf1.tlog\unsuccessfulbuild" wird erstellt, da "AlwaysCreate" angegeben wurde.
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Tools\MSVC\14.11.25503\bin\HostX86\x86\CL.exe /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_6ccf1.dir\Debug\\" /Fd"cmTC_6ccf1.dir\Debug\vc141.pdb" /Gd /TP /analyze- /errorReport:queue "C:\Users\Game on\GPU-Computing\assignment2\Assignment2.build\CMakeFiles\CMakeTmp\testCXXCompiler.cxx"
+  Microsoft (R) C/C++-Optimierungscompiler Version 19.11.25547 für x86
+  Copyright (C) Microsoft Corporation. Alle Rechte vorbehalten.
+  
+  cl /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_6ccf1.dir\Debug\\" /Fd"cmTC_6ccf1.dir\Debug\vc141.pdb" /Gd /TP /analyze- /errorReport:queue "C:\Users\Game on\GPU-Computing\assignment2\Assignment2.build\CMakeFiles\CMakeTmp\testCXXCompiler.cxx"
+  testCXXCompiler.cxx
+  
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Tools\MSVC\14.11.25503\bin\HostX86\x86\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\Game on\GPU-Computing\assignment2\Assignment2.build\CMakeFiles\CMakeTmp\Debug\cmTC_6ccf1.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/Game on/GPU-Computing/assignment2/Assignment2.build/CMakeFiles/CMakeTmp/Debug/cmTC_6ccf1.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/Game on/GPU-Computing/assignment2/Assignment2.build/CMakeFiles/CMakeTmp/Debug/cmTC_6ccf1.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_6ccf1.dir\Debug\testCXXCompiler.obj
+  cmTC_6ccf1.vcxproj -> C:\Users\Game on\GPU-Computing\assignment2\Assignment2.build\CMakeFiles\CMakeTmp\Debug\cmTC_6ccf1.exe
+FinalizeBuildStatus:
+  Die Datei "cmTC_6ccf1.dir\Debug\cmTC_6ccf1.tlog\unsuccessfulbuild" wird gelöscht.
+  Aktualisieren des Timestamps von "cmTC_6ccf1.dir\Debug\cmTC_6ccf1.tlog\cmTC_6ccf1.lastbuildstate".
+Die Erstellung von Projekt "C:\Users\Game on\GPU-Computing\assignment2\Assignment2.build\CMakeFiles\CMakeTmp\cmTC_6ccf1.vcxproj" ist abgeschlossen (Standardziele).
+
+Der Buildvorgang wurde erfolgreich ausgeführt.
+    0 Warnung(en)
+    0 Fehler
+
+Verstrichene Zeit 00:00:00.73
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: C:/Users/Game on/GPU-Computing/assignment2/Assignment2.build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise/MSBuild/15.0/Bin/MSBuild.exe" "cmTC_4b782.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=15.0"
+Microsoft (R)-Buildmodul, Version 15.4.8.50001 für .NET Framework
+Copyright (C) Microsoft Corporation. Alle Rechte vorbehalten.
+
+Der Buildvorgang wurde am 06.11.2017 16:04:53 gestartet.
+Projekt "C:\Users\Game on\GPU-Computing\assignment2\Assignment2.build\CMakeFiles\CMakeTmp\cmTC_4b782.vcxproj" auf Knoten "1" (Standardziele).
+PrepareForBuild:
+  Das Verzeichnis "cmTC_4b782.dir\Debug\" wird erstellt.
+  Das Verzeichnis "C:\Users\Game on\GPU-Computing\assignment2\Assignment2.build\CMakeFiles\CMakeTmp\Debug\" wird erstellt.
+  Das Verzeichnis "cmTC_4b782.dir\Debug\cmTC_4b782.tlog\" wird erstellt.
+InitializeBuildStatus:
+  "cmTC_4b782.dir\Debug\cmTC_4b782.tlog\unsuccessfulbuild" wird erstellt, da "AlwaysCreate" angegeben wurde.
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Tools\MSVC\14.11.25503\bin\HostX86\x86\CL.exe /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_4b782.dir\Debug\\" /Fd"cmTC_4b782.dir\Debug\vc141.pdb" /Gd /TP /analyze- /errorReport:queue "C:\Program Files\CMake\share\cmake-3.9\Modules\CMakeCXXCompilerABI.cpp"
+  Microsoft (R) C/C++-Optimierungscompiler Version 19.11.25547 für x86
+  Copyright (C) Microsoft Corporation. Alle Rechte vorbehalten.
+  
+  cl /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_4b782.dir\Debug\\" /Fd"cmTC_4b782.dir\Debug\vc141.pdb" /Gd /TP /analyze- /errorReport:queue "C:\Program Files\CMake\share\cmake-3.9\Modules\CMakeCXXCompilerABI.cpp"
+  CMakeCXXCompilerABI.cpp
+  
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Tools\MSVC\14.11.25503\bin\HostX86\x86\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\Game on\GPU-Computing\assignment2\Assignment2.build\CMakeFiles\CMakeTmp\Debug\cmTC_4b782.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/Game on/GPU-Computing/assignment2/Assignment2.build/CMakeFiles/CMakeTmp/Debug/cmTC_4b782.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/Game on/GPU-Computing/assignment2/Assignment2.build/CMakeFiles/CMakeTmp/Debug/cmTC_4b782.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_4b782.dir\Debug\CMakeCXXCompilerABI.obj
+  cmTC_4b782.vcxproj -> C:\Users\Game on\GPU-Computing\assignment2\Assignment2.build\CMakeFiles\CMakeTmp\Debug\cmTC_4b782.exe
+FinalizeBuildStatus:
+  Die Datei "cmTC_4b782.dir\Debug\cmTC_4b782.tlog\unsuccessfulbuild" wird gelöscht.
+  Aktualisieren des Timestamps von "cmTC_4b782.dir\Debug\cmTC_4b782.tlog\cmTC_4b782.lastbuildstate".
+Die Erstellung von Projekt "C:\Users\Game on\GPU-Computing\assignment2\Assignment2.build\CMakeFiles\CMakeTmp\cmTC_4b782.vcxproj" ist abgeschlossen (Standardziele).
+
+Der Buildvorgang wurde erfolgreich ausgeführt.
+    0 Warnung(en)
+    0 Fehler
+
+Verstrichene Zeit 00:00:00.71
+
+
+
+
+Detecting CXX [] compiler features compiled with the following output:
+Change Dir: C:/Users/Game on/GPU-Computing/assignment2/Assignment2.build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise/MSBuild/15.0/Bin/MSBuild.exe" "cmTC_8cd41.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=15.0"
+Microsoft (R)-Buildmodul, Version 15.4.8.50001 für .NET Framework
+Copyright (C) Microsoft Corporation. Alle Rechte vorbehalten.
+
+Der Buildvorgang wurde am 06.11.2017 16:04:54 gestartet.
+Projekt "C:\Users\Game on\GPU-Computing\assignment2\Assignment2.build\CMakeFiles\CMakeTmp\cmTC_8cd41.vcxproj" auf Knoten "1" (Standardziele).
+PrepareForBuild:
+  Das Verzeichnis "cmTC_8cd41.dir\Debug\" wird erstellt.
+  Das Verzeichnis "C:\Users\Game on\GPU-Computing\assignment2\Assignment2.build\CMakeFiles\CMakeTmp\Debug\" wird erstellt.
+  Das Verzeichnis "cmTC_8cd41.dir\Debug\cmTC_8cd41.tlog\" wird erstellt.
+InitializeBuildStatus:
+  "cmTC_8cd41.dir\Debug\cmTC_8cd41.tlog\unsuccessfulbuild" wird erstellt, da "AlwaysCreate" angegeben wurde.
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Tools\MSVC\14.11.25503\bin\HostX86\x86\CL.exe /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_8cd41.dir\Debug\\" /Fd"cmTC_8cd41.dir\Debug\vc141.pdb" /Gd /TP /analyze- /errorReport:queue "C:\Users\Game on\GPU-Computing\assignment2\Assignment2.build\CMakeFiles\feature_tests.cxx"
+  Microsoft (R) C/C++-Optimierungscompiler Version 19.11.25547 für x86
+  Copyright (C) Microsoft Corporation. Alle Rechte vorbehalten.
+  
+  cl /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_8cd41.dir\Debug\\" /Fd"cmTC_8cd41.dir\Debug\vc141.pdb" /Gd /TP /analyze- /errorReport:queue "C:\Users\Game on\GPU-Computing\assignment2\Assignment2.build\CMakeFiles\feature_tests.cxx"
+  feature_tests.cxx
+  
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Tools\MSVC\14.11.25503\bin\HostX86\x86\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\Game on\GPU-Computing\assignment2\Assignment2.build\CMakeFiles\CMakeTmp\Debug\cmTC_8cd41.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/Game on/GPU-Computing/assignment2/Assignment2.build/CMakeFiles/CMakeTmp/Debug/cmTC_8cd41.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/Game on/GPU-Computing/assignment2/Assignment2.build/CMakeFiles/CMakeTmp/Debug/cmTC_8cd41.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_8cd41.dir\Debug\feature_tests.obj
+  cmTC_8cd41.vcxproj -> C:\Users\Game on\GPU-Computing\assignment2\Assignment2.build\CMakeFiles\CMakeTmp\Debug\cmTC_8cd41.exe
+FinalizeBuildStatus:
+  Die Datei "cmTC_8cd41.dir\Debug\cmTC_8cd41.tlog\unsuccessfulbuild" wird gelöscht.
+  Aktualisieren des Timestamps von "cmTC_8cd41.dir\Debug\cmTC_8cd41.tlog\cmTC_8cd41.lastbuildstate".
+Die Erstellung von Projekt "C:\Users\Game on\GPU-Computing\assignment2\Assignment2.build\CMakeFiles\CMakeTmp\cmTC_8cd41.vcxproj" ist abgeschlossen (Standardziele).
+
+Der Buildvorgang wurde erfolgreich ausgeführt.
+    0 Warnung(en)
+    0 Fehler
+
+Verstrichene Zeit 00:00:00.70
+
+
+    Feature record: CXX_FEATURE:1cxx_aggregate_default_initializers
+    Feature record: CXX_FEATURE:1cxx_alias_templates
+    Feature record: CXX_FEATURE:1cxx_alignas
+    Feature record: CXX_FEATURE:1cxx_alignof
+    Feature record: CXX_FEATURE:1cxx_attributes
+    Feature record: CXX_FEATURE:1cxx_attribute_deprecated
+    Feature record: CXX_FEATURE:1cxx_auto_type
+    Feature record: CXX_FEATURE:1cxx_binary_literals
+    Feature record: CXX_FEATURE:1cxx_constexpr
+    Feature record: CXX_FEATURE:1cxx_contextual_conversions
+    Feature record: CXX_FEATURE:1cxx_decltype
+    Feature record: CXX_FEATURE:1cxx_decltype_auto
+    Feature record: CXX_FEATURE:1cxx_default_function_template_args
+    Feature record: CXX_FEATURE:1cxx_defaulted_functions
+    Feature record: CXX_FEATURE:1cxx_defaulted_move_initializers
+    Feature record: CXX_FEATURE:1cxx_delegating_constructors
+    Feature record: CXX_FEATURE:1cxx_deleted_functions
+    Feature record: CXX_FEATURE:1cxx_digit_separators
+    Feature record: CXX_FEATURE:1cxx_enum_forward_declarations
+    Feature record: CXX_FEATURE:1cxx_explicit_conversions
+    Feature record: CXX_FEATURE:1cxx_extended_friend_declarations
+    Feature record: CXX_FEATURE:1cxx_extern_templates
+    Feature record: CXX_FEATURE:1cxx_final
+    Feature record: CXX_FEATURE:1cxx_func_identifier
+    Feature record: CXX_FEATURE:1cxx_generalized_initializers
+    Feature record: CXX_FEATURE:1cxx_generic_lambdas
+    Feature record: CXX_FEATURE:1cxx_inheriting_constructors
+    Feature record: CXX_FEATURE:1cxx_inline_namespaces
+    Feature record: CXX_FEATURE:1cxx_lambdas
+    Feature record: CXX_FEATURE:1cxx_lambda_init_captures
+    Feature record: CXX_FEATURE:1cxx_local_type_template_args
+    Feature record: CXX_FEATURE:1cxx_long_long_type
+    Feature record: CXX_FEATURE:1cxx_noexcept
+    Feature record: CXX_FEATURE:1cxx_nonstatic_member_init
+    Feature record: CXX_FEATURE:1cxx_nullptr
+    Feature record: CXX_FEATURE:1cxx_override
+    Feature record: CXX_FEATURE:1cxx_range_for
+    Feature record: CXX_FEATURE:1cxx_raw_string_literals
+    Feature record: CXX_FEATURE:1cxx_reference_qualified_functions
+    Feature record: CXX_FEATURE:1cxx_return_type_deduction
+    Feature record: CXX_FEATURE:1cxx_right_angle_brackets
+    Feature record: CXX_FEATURE:1cxx_rvalue_references
+    Feature record: CXX_FEATURE:1cxx_sizeof_member
+    Feature record: CXX_FEATURE:1cxx_static_assert
+    Feature record: CXX_FEATURE:1cxx_strong_enums
+    Feature record: CXX_FEATURE:1cxx_template_template_parameters
+    Feature record: CXX_FEATURE:1cxx_thread_local
+    Feature record: CXX_FEATURE:1cxx_trailing_return_types
+    Feature record: CXX_FEATURE:1cxx_unicode_literals
+    Feature record: CXX_FEATURE:1cxx_uniform_initialization
+    Feature record: CXX_FEATURE:1cxx_unrestricted_unions
+    Feature record: CXX_FEATURE:1cxx_user_literals
+    Feature record: CXX_FEATURE:1cxx_variable_templates
+    Feature record: CXX_FEATURE:1cxx_variadic_macros
+    Feature record: CXX_FEATURE:1cxx_variadic_templates
+
+
+Detecting CXX [] compiler features compiled with the following output:
+Change Dir: C:/Users/Game on/GPU-Computing/assignment2/Assignment2.build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise/MSBuild/15.0/Bin/MSBuild.exe" "cmTC_c28ee.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=15.0"
+Microsoft (R)-Buildmodul, Version 15.4.8.50001 für .NET Framework
+Copyright (C) Microsoft Corporation. Alle Rechte vorbehalten.
+
+Der Buildvorgang wurde am 06.11.2017 16:04:55 gestartet.
+Projekt "C:\Users\Game on\GPU-Computing\assignment2\Assignment2.build\CMakeFiles\CMakeTmp\cmTC_c28ee.vcxproj" auf Knoten "1" (Standardziele).
+PrepareForBuild:
+  Das Verzeichnis "cmTC_c28ee.dir\Debug\" wird erstellt.
+  Das Verzeichnis "C:\Users\Game on\GPU-Computing\assignment2\Assignment2.build\CMakeFiles\CMakeTmp\Debug\" wird erstellt.
+  Das Verzeichnis "cmTC_c28ee.dir\Debug\cmTC_c28ee.tlog\" wird erstellt.
+InitializeBuildStatus:
+  "cmTC_c28ee.dir\Debug\cmTC_c28ee.tlog\unsuccessfulbuild" wird erstellt, da "AlwaysCreate" angegeben wurde.
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Tools\MSVC\14.11.25503\bin\HostX86\x86\CL.exe /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_c28ee.dir\Debug\\" /Fd"cmTC_c28ee.dir\Debug\vc141.pdb" /Gd /TP /analyze- /errorReport:queue "C:\Users\Game on\GPU-Computing\assignment2\Assignment2.build\CMakeFiles\feature_tests.cxx"
+  Microsoft (R) C/C++-Optimierungscompiler Version 19.11.25547 für x86
+  Copyright (C) Microsoft Corporation. Alle Rechte vorbehalten.
+  
+  cl /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_c28ee.dir\Debug\\" /Fd"cmTC_c28ee.dir\Debug\vc141.pdb" /Gd /TP /analyze- /errorReport:queue "C:\Users\Game on\GPU-Computing\assignment2\Assignment2.build\CMakeFiles\feature_tests.cxx"
+  feature_tests.cxx
+  
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Tools\MSVC\14.11.25503\bin\HostX86\x86\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\Game on\GPU-Computing\assignment2\Assignment2.build\CMakeFiles\CMakeTmp\Debug\cmTC_c28ee.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/Game on/GPU-Computing/assignment2/Assignment2.build/CMakeFiles/CMakeTmp/Debug/cmTC_c28ee.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/Game on/GPU-Computing/assignment2/Assignment2.build/CMakeFiles/CMakeTmp/Debug/cmTC_c28ee.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_c28ee.dir\Debug\feature_tests.obj
+  cmTC_c28ee.vcxproj -> C:\Users\Game on\GPU-Computing\assignment2\Assignment2.build\CMakeFiles\CMakeTmp\Debug\cmTC_c28ee.exe
+FinalizeBuildStatus:
+  Die Datei "cmTC_c28ee.dir\Debug\cmTC_c28ee.tlog\unsuccessfulbuild" wird gelöscht.
+  Aktualisieren des Timestamps von "cmTC_c28ee.dir\Debug\cmTC_c28ee.tlog\cmTC_c28ee.lastbuildstate".
+Die Erstellung von Projekt "C:\Users\Game on\GPU-Computing\assignment2\Assignment2.build\CMakeFiles\CMakeTmp\cmTC_c28ee.vcxproj" ist abgeschlossen (Standardziele).
+
+Der Buildvorgang wurde erfolgreich ausgeführt.
+    0 Warnung(en)
+    0 Fehler
+
+Verstrichene Zeit 00:00:00.71
+
+
+    Feature record: CXX_FEATURE:1cxx_aggregate_default_initializers
+    Feature record: CXX_FEATURE:1cxx_alias_templates
+    Feature record: CXX_FEATURE:1cxx_alignas
+    Feature record: CXX_FEATURE:1cxx_alignof
+    Feature record: CXX_FEATURE:1cxx_attributes
+    Feature record: CXX_FEATURE:1cxx_attribute_deprecated
+    Feature record: CXX_FEATURE:1cxx_auto_type
+    Feature record: CXX_FEATURE:1cxx_binary_literals
+    Feature record: CXX_FEATURE:1cxx_constexpr
+    Feature record: CXX_FEATURE:1cxx_contextual_conversions
+    Feature record: CXX_FEATURE:1cxx_decltype
+    Feature record: CXX_FEATURE:1cxx_decltype_auto
+    Feature record: CXX_FEATURE:1cxx_default_function_template_args
+    Feature record: CXX_FEATURE:1cxx_defaulted_functions
+    Feature record: CXX_FEATURE:1cxx_defaulted_move_initializers
+    Feature record: CXX_FEATURE:1cxx_delegating_constructors
+    Feature record: CXX_FEATURE:1cxx_deleted_functions
+    Feature record: CXX_FEATURE:1cxx_digit_separators
+    Feature record: CXX_FEATURE:1cxx_enum_forward_declarations
+    Feature record: CXX_FEATURE:1cxx_explicit_conversions
+    Feature record: CXX_FEATURE:1cxx_extended_friend_declarations
+    Feature record: CXX_FEATURE:1cxx_extern_templates
+    Feature record: CXX_FEATURE:1cxx_final
+    Feature record: CXX_FEATURE:1cxx_func_identifier
+    Feature record: CXX_FEATURE:1cxx_generalized_initializers
+    Feature record: CXX_FEATURE:1cxx_generic_lambdas
+    Feature record: CXX_FEATURE:1cxx_inheriting_constructors
+    Feature record: CXX_FEATURE:1cxx_inline_namespaces
+    Feature record: CXX_FEATURE:1cxx_lambdas
+    Feature record: CXX_FEATURE:1cxx_lambda_init_captures
+    Feature record: CXX_FEATURE:1cxx_local_type_template_args
+    Feature record: CXX_FEATURE:1cxx_long_long_type
+    Feature record: CXX_FEATURE:1cxx_noexcept
+    Feature record: CXX_FEATURE:1cxx_nonstatic_member_init
+    Feature record: CXX_FEATURE:1cxx_nullptr
+    Feature record: CXX_FEATURE:1cxx_override
+    Feature record: CXX_FEATURE:1cxx_range_for
+    Feature record: CXX_FEATURE:1cxx_raw_string_literals
+    Feature record: CXX_FEATURE:1cxx_reference_qualified_functions
+    Feature record: CXX_FEATURE:1cxx_return_type_deduction
+    Feature record: CXX_FEATURE:1cxx_right_angle_brackets
+    Feature record: CXX_FEATURE:1cxx_rvalue_references
+    Feature record: CXX_FEATURE:1cxx_sizeof_member
+    Feature record: CXX_FEATURE:1cxx_static_assert
+    Feature record: CXX_FEATURE:1cxx_strong_enums
+    Feature record: CXX_FEATURE:1cxx_template_template_parameters
+    Feature record: CXX_FEATURE:1cxx_thread_local
+    Feature record: CXX_FEATURE:1cxx_trailing_return_types
+    Feature record: CXX_FEATURE:1cxx_unicode_literals
+    Feature record: CXX_FEATURE:1cxx_uniform_initialization
+    Feature record: CXX_FEATURE:1cxx_unrestricted_unions
+    Feature record: CXX_FEATURE:1cxx_user_literals
+    Feature record: CXX_FEATURE:1cxx_variable_templates
+    Feature record: CXX_FEATURE:1cxx_variadic_macros
+    Feature record: CXX_FEATURE:1cxx_variadic_templates
+
+
+Detecting CXX [] compiler features compiled with the following output:
+Change Dir: C:/Users/Game on/GPU-Computing/assignment2/Assignment2.build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise/MSBuild/15.0/Bin/MSBuild.exe" "cmTC_3fe16.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=15.0"
+Microsoft (R)-Buildmodul, Version 15.4.8.50001 für .NET Framework
+Copyright (C) Microsoft Corporation. Alle Rechte vorbehalten.
+
+Der Buildvorgang wurde am 06.11.2017 16:04:56 gestartet.
+Projekt "C:\Users\Game on\GPU-Computing\assignment2\Assignment2.build\CMakeFiles\CMakeTmp\cmTC_3fe16.vcxproj" auf Knoten "1" (Standardziele).
+PrepareForBuild:
+  Das Verzeichnis "cmTC_3fe16.dir\Debug\" wird erstellt.
+  Das Verzeichnis "C:\Users\Game on\GPU-Computing\assignment2\Assignment2.build\CMakeFiles\CMakeTmp\Debug\" wird erstellt.
+  Das Verzeichnis "cmTC_3fe16.dir\Debug\cmTC_3fe16.tlog\" wird erstellt.
+InitializeBuildStatus:
+  "cmTC_3fe16.dir\Debug\cmTC_3fe16.tlog\unsuccessfulbuild" wird erstellt, da "AlwaysCreate" angegeben wurde.
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Tools\MSVC\14.11.25503\bin\HostX86\x86\CL.exe /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_3fe16.dir\Debug\\" /Fd"cmTC_3fe16.dir\Debug\vc141.pdb" /Gd /TP /analyze- /errorReport:queue "C:\Users\Game on\GPU-Computing\assignment2\Assignment2.build\CMakeFiles\feature_tests.cxx"
+  Microsoft (R) C/C++-Optimierungscompiler Version 19.11.25547 für x86
+  Copyright (C) Microsoft Corporation. Alle Rechte vorbehalten.
+  
+  cl /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_3fe16.dir\Debug\\" /Fd"cmTC_3fe16.dir\Debug\vc141.pdb" /Gd /TP /analyze- /errorReport:queue "C:\Users\Game on\GPU-Computing\assignment2\Assignment2.build\CMakeFiles\feature_tests.cxx"
+  feature_tests.cxx
+  
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Tools\MSVC\14.11.25503\bin\HostX86\x86\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\Game on\GPU-Computing\assignment2\Assignment2.build\CMakeFiles\CMakeTmp\Debug\cmTC_3fe16.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/Game on/GPU-Computing/assignment2/Assignment2.build/CMakeFiles/CMakeTmp/Debug/cmTC_3fe16.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/Game on/GPU-Computing/assignment2/Assignment2.build/CMakeFiles/CMakeTmp/Debug/cmTC_3fe16.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_3fe16.dir\Debug\feature_tests.obj
+  cmTC_3fe16.vcxproj -> C:\Users\Game on\GPU-Computing\assignment2\Assignment2.build\CMakeFiles\CMakeTmp\Debug\cmTC_3fe16.exe
+FinalizeBuildStatus:
+  Die Datei "cmTC_3fe16.dir\Debug\cmTC_3fe16.tlog\unsuccessfulbuild" wird gelöscht.
+  Aktualisieren des Timestamps von "cmTC_3fe16.dir\Debug\cmTC_3fe16.tlog\cmTC_3fe16.lastbuildstate".
+Die Erstellung von Projekt "C:\Users\Game on\GPU-Computing\assignment2\Assignment2.build\CMakeFiles\CMakeTmp\cmTC_3fe16.vcxproj" ist abgeschlossen (Standardziele).
+
+Der Buildvorgang wurde erfolgreich ausgeführt.
+    0 Warnung(en)
+    0 Fehler
+
+Verstrichene Zeit 00:00:00.73
+
+
+    Feature record: CXX_FEATURE:1cxx_aggregate_default_initializers
+    Feature record: CXX_FEATURE:1cxx_alias_templates
+    Feature record: CXX_FEATURE:1cxx_alignas
+    Feature record: CXX_FEATURE:1cxx_alignof
+    Feature record: CXX_FEATURE:1cxx_attributes
+    Feature record: CXX_FEATURE:1cxx_attribute_deprecated
+    Feature record: CXX_FEATURE:1cxx_auto_type
+    Feature record: CXX_FEATURE:1cxx_binary_literals
+    Feature record: CXX_FEATURE:1cxx_constexpr
+    Feature record: CXX_FEATURE:1cxx_contextual_conversions
+    Feature record: CXX_FEATURE:1cxx_decltype
+    Feature record: CXX_FEATURE:1cxx_decltype_auto
+    Feature record: CXX_FEATURE:1cxx_default_function_template_args
+    Feature record: CXX_FEATURE:1cxx_defaulted_functions
+    Feature record: CXX_FEATURE:1cxx_defaulted_move_initializers
+    Feature record: CXX_FEATURE:1cxx_delegating_constructors
+    Feature record: CXX_FEATURE:1cxx_deleted_functions
+    Feature record: CXX_FEATURE:1cxx_digit_separators
+    Feature record: CXX_FEATURE:1cxx_enum_forward_declarations
+    Feature record: CXX_FEATURE:1cxx_explicit_conversions
+    Feature record: CXX_FEATURE:1cxx_extended_friend_declarations
+    Feature record: CXX_FEATURE:1cxx_extern_templates
+    Feature record: CXX_FEATURE:1cxx_final
+    Feature record: CXX_FEATURE:1cxx_func_identifier
+    Feature record: CXX_FEATURE:1cxx_generalized_initializers
+    Feature record: CXX_FEATURE:1cxx_generic_lambdas
+    Feature record: CXX_FEATURE:1cxx_inheriting_constructors
+    Feature record: CXX_FEATURE:1cxx_inline_namespaces
+    Feature record: CXX_FEATURE:1cxx_lambdas
+    Feature record: CXX_FEATURE:1cxx_lambda_init_captures
+    Feature record: CXX_FEATURE:1cxx_local_type_template_args
+    Feature record: CXX_FEATURE:1cxx_long_long_type
+    Feature record: CXX_FEATURE:1cxx_noexcept
+    Feature record: CXX_FEATURE:1cxx_nonstatic_member_init
+    Feature record: CXX_FEATURE:1cxx_nullptr
+    Feature record: CXX_FEATURE:1cxx_override
+    Feature record: CXX_FEATURE:1cxx_range_for
+    Feature record: CXX_FEATURE:1cxx_raw_string_literals
+    Feature record: CXX_FEATURE:1cxx_reference_qualified_functions
+    Feature record: CXX_FEATURE:1cxx_return_type_deduction
+    Feature record: CXX_FEATURE:1cxx_right_angle_brackets
+    Feature record: CXX_FEATURE:1cxx_rvalue_references
+    Feature record: CXX_FEATURE:1cxx_sizeof_member
+    Feature record: CXX_FEATURE:1cxx_static_assert
+    Feature record: CXX_FEATURE:1cxx_strong_enums
+    Feature record: CXX_FEATURE:1cxx_template_template_parameters
+    Feature record: CXX_FEATURE:1cxx_thread_local
+    Feature record: CXX_FEATURE:1cxx_trailing_return_types
+    Feature record: CXX_FEATURE:1cxx_unicode_literals
+    Feature record: CXX_FEATURE:1cxx_uniform_initialization
+    Feature record: CXX_FEATURE:1cxx_unrestricted_unions
+    Feature record: CXX_FEATURE:1cxx_user_literals
+    Feature record: CXX_FEATURE:1cxx_variable_templates
+    Feature record: CXX_FEATURE:1cxx_variadic_macros
+    Feature record: CXX_FEATURE:1cxx_variadic_templates
+
+
+Detecting CXX [] compiler features compiled with the following output:
+Change Dir: C:/Users/Game on/GPU-Computing/assignment2/Assignment2.build/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise/MSBuild/15.0/Bin/MSBuild.exe" "cmTC_b66ef.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=15.0"
+Microsoft (R)-Buildmodul, Version 15.4.8.50001 für .NET Framework
+Copyright (C) Microsoft Corporation. Alle Rechte vorbehalten.
+
+Der Buildvorgang wurde am 06.11.2017 16:04:57 gestartet.
+Projekt "C:\Users\Game on\GPU-Computing\assignment2\Assignment2.build\CMakeFiles\CMakeTmp\cmTC_b66ef.vcxproj" auf Knoten "1" (Standardziele).
+PrepareForBuild:
+  Das Verzeichnis "cmTC_b66ef.dir\Debug\" wird erstellt.
+  Das Verzeichnis "C:\Users\Game on\GPU-Computing\assignment2\Assignment2.build\CMakeFiles\CMakeTmp\Debug\" wird erstellt.
+  Das Verzeichnis "cmTC_b66ef.dir\Debug\cmTC_b66ef.tlog\" wird erstellt.
+InitializeBuildStatus:
+  "cmTC_b66ef.dir\Debug\cmTC_b66ef.tlog\unsuccessfulbuild" wird erstellt, da "AlwaysCreate" angegeben wurde.
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Tools\MSVC\14.11.25503\bin\HostX86\x86\CL.exe /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_b66ef.dir\Debug\\" /Fd"cmTC_b66ef.dir\Debug\vc141.pdb" /Gd /TP /analyze- /errorReport:queue "C:\Users\Game on\GPU-Computing\assignment2\Assignment2.build\CMakeFiles\feature_tests.cxx"
+  Microsoft (R) C/C++-Optimierungscompiler Version 19.11.25547 für x86
+  Copyright (C) Microsoft Corporation. Alle Rechte vorbehalten.
+  
+  cl /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_b66ef.dir\Debug\\" /Fd"cmTC_b66ef.dir\Debug\vc141.pdb" /Gd /TP /analyze- /errorReport:queue "C:\Users\Game on\GPU-Computing\assignment2\Assignment2.build\CMakeFiles\feature_tests.cxx"
+  feature_tests.cxx
+  
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Tools\MSVC\14.11.25503\bin\HostX86\x86\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\Game on\GPU-Computing\assignment2\Assignment2.build\CMakeFiles\CMakeTmp\Debug\cmTC_b66ef.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/Game on/GPU-Computing/assignment2/Assignment2.build/CMakeFiles/CMakeTmp/Debug/cmTC_b66ef.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/Game on/GPU-Computing/assignment2/Assignment2.build/CMakeFiles/CMakeTmp/Debug/cmTC_b66ef.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_b66ef.dir\Debug\feature_tests.obj
+  cmTC_b66ef.vcxproj -> C:\Users\Game on\GPU-Computing\assignment2\Assignment2.build\CMakeFiles\CMakeTmp\Debug\cmTC_b66ef.exe
+FinalizeBuildStatus:
+  Die Datei "cmTC_b66ef.dir\Debug\cmTC_b66ef.tlog\unsuccessfulbuild" wird gelöscht.
+  Aktualisieren des Timestamps von "cmTC_b66ef.dir\Debug\cmTC_b66ef.tlog\cmTC_b66ef.lastbuildstate".
+Die Erstellung von Projekt "C:\Users\Game on\GPU-Computing\assignment2\Assignment2.build\CMakeFiles\CMakeTmp\cmTC_b66ef.vcxproj" ist abgeschlossen (Standardziele).
+
+Der Buildvorgang wurde erfolgreich ausgeführt.
+    0 Warnung(en)
+    0 Fehler
+
+Verstrichene Zeit 00:00:00.75
+
+
+    Feature record: CXX_FEATURE:1cxx_aggregate_default_initializers
+    Feature record: CXX_FEATURE:1cxx_alias_templates
+    Feature record: CXX_FEATURE:1cxx_alignas
+    Feature record: CXX_FEATURE:1cxx_alignof
+    Feature record: CXX_FEATURE:1cxx_attributes
+    Feature record: CXX_FEATURE:1cxx_attribute_deprecated
+    Feature record: CXX_FEATURE:1cxx_auto_type
+    Feature record: CXX_FEATURE:1cxx_binary_literals
+    Feature record: CXX_FEATURE:1cxx_constexpr
+    Feature record: CXX_FEATURE:1cxx_contextual_conversions
+    Feature record: CXX_FEATURE:1cxx_decltype
+    Feature record: CXX_FEATURE:1cxx_decltype_auto
+    Feature record: CXX_FEATURE:1cxx_default_function_template_args
+    Feature record: CXX_FEATURE:1cxx_defaulted_functions
+    Feature record: CXX_FEATURE:1cxx_defaulted_move_initializers
+    Feature record: CXX_FEATURE:1cxx_delegating_constructors
+    Feature record: CXX_FEATURE:1cxx_deleted_functions
+    Feature record: CXX_FEATURE:1cxx_digit_separators
+    Feature record: CXX_FEATURE:1cxx_enum_forward_declarations
+    Feature record: CXX_FEATURE:1cxx_explicit_conversions
+    Feature record: CXX_FEATURE:1cxx_extended_friend_declarations
+    Feature record: CXX_FEATURE:1cxx_extern_templates
+    Feature record: CXX_FEATURE:1cxx_final
+    Feature record: CXX_FEATURE:1cxx_func_identifier
+    Feature record: CXX_FEATURE:1cxx_generalized_initializers
+    Feature record: CXX_FEATURE:1cxx_generic_lambdas
+    Feature record: CXX_FEATURE:1cxx_inheriting_constructors
+    Feature record: CXX_FEATURE:1cxx_inline_namespaces
+    Feature record: CXX_FEATURE:1cxx_lambdas
+    Feature record: CXX_FEATURE:1cxx_lambda_init_captures
+    Feature record: CXX_FEATURE:1cxx_local_type_template_args
+    Feature record: CXX_FEATURE:1cxx_long_long_type
+    Feature record: CXX_FEATURE:1cxx_noexcept
+    Feature record: CXX_FEATURE:1cxx_nonstatic_member_init
+    Feature record: CXX_FEATURE:1cxx_nullptr
+    Feature record: CXX_FEATURE:1cxx_override
+    Feature record: CXX_FEATURE:1cxx_range_for
+    Feature record: CXX_FEATURE:1cxx_raw_string_literals
+    Feature record: CXX_FEATURE:1cxx_reference_qualified_functions
+    Feature record: CXX_FEATURE:1cxx_return_type_deduction
+    Feature record: CXX_FEATURE:1cxx_right_angle_brackets
+    Feature record: CXX_FEATURE:1cxx_rvalue_references
+    Feature record: CXX_FEATURE:1cxx_sizeof_member
+    Feature record: CXX_FEATURE:1cxx_static_assert
+    Feature record: CXX_FEATURE:1cxx_strong_enums
+    Feature record: CXX_FEATURE:1cxx_template_template_parameters
+    Feature record: CXX_FEATURE:1cxx_thread_local
+    Feature record: CXX_FEATURE:1cxx_trailing_return_types
+    Feature record: CXX_FEATURE:1cxx_unicode_literals
+    Feature record: CXX_FEATURE:1cxx_uniform_initialization
+    Feature record: CXX_FEATURE:1cxx_unrestricted_unions
+    Feature record: CXX_FEATURE:1cxx_user_literals
+    Feature record: CXX_FEATURE:1cxx_variable_templates
+    Feature record: CXX_FEATURE:1cxx_variadic_macros
+    Feature record: CXX_FEATURE:1cxx_variadic_templates

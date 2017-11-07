@@ -1,0 +1,4 @@
+C:/Users/Game on/GPU-Computing/assignment2/Assignment2.build/CMakeFiles/Assignment.dir
+C:/Users/Game on/GPU-Computing/assignment2/Assignment2.build/CMakeFiles/ALL_BUILD.dir
+C:/Users/Game on/GPU-Computing/assignment2/Assignment2.build/CMakeFiles/ZERO_CHECK.dir
+C:/Users/Game on/GPU-Computing/assignment2/Assignment2.build/Common/CMakeFiles/GPUCommon.dir
