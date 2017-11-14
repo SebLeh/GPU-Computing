@@ -19,7 +19,7 @@ bool CAssignment2::DoCompute()
 {
 	// Task 1: parallel reduction
 	cout<<"########################################"<<endl;
-	cout<<"Running parallel reduction task..."<<endl<<endl;
+	cout<<"Running parallel reduction task..."<<endl<<endl; 
 	{ 
 		size_t LocalWorkSize[3] = {256, 1, 1};
 		CReductionTask reduction(1024 * 1024 * 16);

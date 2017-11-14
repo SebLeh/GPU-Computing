@@ -41,8 +41,8 @@ bool CReductionTask::InitResources(cl_device_id Device, cl_context Context)
 
 	//fill the array with some values
 	for(unsigned int i = 0; i < m_N; i++) 
-		//m_hInput[i] = 1;			// Use this for debugging
-		m_hInput[i] = rand() & 15;
+		m_hInput[i] = 1;			// Use this for debugging
+		//m_hInput[i] = rand() & 15;
 
 	//device resources
 	cl_int clError, clError2;
@@ -55,7 +55,7 @@ bool CReductionTask::InitResources(cl_device_id Device, cl_context Context)
 	//load and compile kernels
 	string programCode;
 
-	CLUtil::LoadProgramSourceToMemory("Reduction.cl", programCode);
+	CLUtil::LoadProgramSourceToMemory("../Assignment2/Reduction.cl", programCode);
 	m_Program = CLUtil::BuildCLProgramFromMemory(Device, Context, programCode);
 	if(m_Program == nullptr) return false;
 
@@ -65,7 +65,7 @@ bool CReductionTask::InitResources(cl_device_id Device, cl_context Context)
 
 	m_SequentialAddressingKernel = clCreateKernel(m_Program, "Reduction_SequentialAddressing", &clError);
 	V_RETURN_FALSE_CL(clError, "Failed to create kernel: Reduction_SequentialAddressing.");
-
+	
 	m_DecompKernel = clCreateKernel(m_Program, "Reduction_Decomp", &clError);
 	V_RETURN_FALSE_CL(clError, "Failed to create kernel: Reduction_Decomp.");
 
@@ -99,10 +99,10 @@ void CReductionTask::ComputeGPU(cl_context Context, cl_command_queue CommandQueu
 	ExecuteTask(Context, CommandQueue, LocalWorkSize, 2);
 	ExecuteTask(Context, CommandQueue, LocalWorkSize, 3);
 
-	TestPerformance(Context, CommandQueue, LocalWorkSize, 0);
-	TestPerformance(Context, CommandQueue, LocalWorkSize, 1);
-	TestPerformance(Context, CommandQueue, LocalWorkSize, 2);
-	TestPerformance(Context, CommandQueue, LocalWorkSize, 3);
+	//TestPerformance(Context, CommandQueue, LocalWorkSize, 0);
+	//TestPerformance(Context, CommandQueue, LocalWorkSize, 1);
+	//TestPerformance(Context, CommandQueue, LocalWorkSize, 2);
+	//TestPerformance(Context, CommandQueue, LocalWorkSize, 3);
 
 }
 
@@ -141,15 +141,44 @@ bool CReductionTask::ValidateResults()
 
 void CReductionTask::Reduction_InterleavedAddressing(cl_context Context, cl_command_queue CommandQueue, size_t LocalWorkSize[3])
 {
-	//cl_int clErr;
-	//size_t globalWorkSize[1];
-	//size_t localWorkSize[1];
-	//unsigned int stride = ...;
 
-	// TO DO: Implement reduction with interleaved addressing
+	cl_int clErr;
 
-	//for (...) {
-	//}
+	unsigned int nKernelCalls = (unsigned)log2(m_N);				// for synchronizing, the kernel has to be called 24 = log2(1024*1024*16) times
+	unsigned int offset = 1;		// defines the offset for elements to be added 
+	unsigned int stride = 2;		// defines the stepsize for the first element of each addition
+	size_t globalWorkSize =  m_N / 2 ;			//number of threads; initially equals half the array size
+	//size_t nGroups = globalWorkSize / LocalWorkSize[0];
+	size_t localWorkSize = LocalWorkSize[0];
+
+		
+	//cout << "Executing Interleaved Addressing with " << globalWorkSize << " threads in " << nGroups << " groups of size " << LocalWorkSize[0] << endl;
+
+	for (unsigned int j = 1; j < nKernelCalls; j++)
+	{
+		clErr = clSetKernelArg(m_InterleavedAddressingKernel, 0, sizeof(cl_mem), (void*)&m_dPingArray);
+		clErr = clSetKernelArg(m_InterleavedAddressingKernel, 1, sizeof(cl_uint), (void*)&offset);
+		clErr = clSetKernelArg(m_InterleavedAddressingKernel, 2, sizeof(cl_uint), (void*)&stride);
+		clErr = clSetKernelArg(m_InterleavedAddressingKernel, 3, sizeof(cl_uint), (void*)&m_N);
+		V_RETURN_CL(clErr, "Failed to set Kernel args: m_InterleavedAddressingKernel");
+
+		clErr = clEnqueueWriteBuffer(CommandQueue, m_dPingArray, CL_FALSE, 0, m_N * sizeof(unsigned), m_hInput, 0, NULL, NULL);
+		V_RETURN_CL(clErr, "Error copying data from host (m_hInput) to device (m_dPingArray)!");
+
+		clErr = clEnqueueNDRangeKernel(CommandQueue, m_InterleavedAddressingKernel, 1, NULL, &globalWorkSize, &localWorkSize, 0, NULL, NULL);
+		V_RETURN_CL(clErr, "Error executing Kernel m_InterleavedAddressingKernel!");
+			
+		clErr = clEnqueueReadBuffer(CommandQueue, m_dPingArray, CL_TRUE, 0, m_N * sizeof(unsigned), m_hInput, 0, NULL, NULL);
+		V_RETURN_CL(clErr, "Error reading data from device (m_dPingArray) to host (m_hInput)!");
+
+		offset = pow(2, j);
+		stride = offset * 2;
+		globalWorkSize = m_N / stride;
+		//cout << j;		//for debugging
+		if (localWorkSize > globalWorkSize)
+			localWorkSize = globalWorkSize / 2;
+	}
+
 }
 
 void CReductionTask::Reduction_SequentialAddressing(cl_context Context, cl_command_queue CommandQueue, size_t LocalWorkSize[3])
@@ -157,6 +186,41 @@ void CReductionTask::Reduction_SequentialAddressing(cl_context Context, cl_comma
 
 	// TO DO: Implement reduction with sequential addressing
 
+	cl_int clErr;
+
+	unsigned int nKernelCalls = (unsigned)log2(m_N);				// for synchronizing, the kernel has to be called 24 = log2(1024*1024*16) times
+	size_t globalWorkSize = m_N / 2;			//number of threads; equals half the array size
+	//size_t nGroups = globalWorkSize / LocalWorkSize[0];
+	size_t localWorkSize = LocalWorkSize[0];
+	unsigned int new_N = m_N;
+
+	//cout << "Executing Interleaved Addressing with " << globalWorkSize << " threads in " << nGroups << " groups of size " << LocalWorkSize[0] << endl;
+
+	for (unsigned int j = 1; j < nKernelCalls; j++)
+	{
+		clErr = clSetKernelArg(m_InterleavedAddressingKernel, 0, sizeof(cl_mem), (void*)&m_dPingArray);
+		clErr = clSetKernelArg(m_InterleavedAddressingKernel, 1, sizeof(cl_mem), (void*)&m_dPongArray);
+		clErr = clSetKernelArg(m_InterleavedAddressingKernel, 2, sizeof(cl_uint), (void*)&new_N);
+		V_RETURN_CL(clErr, "Failed to set Kernel args: m_InterleavedAddressingKernel");
+
+		clErr = clEnqueueWriteBuffer(CommandQueue, m_dPingArray, CL_FALSE, 0, new_N * sizeof(unsigned), m_hInput, 0, NULL, NULL);
+		V_RETURN_CL(clErr, "Error copying data from host (m_hInput) to device (m_dPingArray)!");
+		clErr = clEnqueueWriteBuffer(CommandQueue, m_dPongArray, CL_FALSE, 0, new_N * sizeof(unsigned), m_hInput, 0, NULL, NULL);
+		V_RETURN_CL(clErr, "Error copying data from host (m_hInput) to device (m_dPongArray)!");
+
+		clErr = clEnqueueNDRangeKernel(CommandQueue, m_SequentialAddressingKernel, 1, NULL, &globalWorkSize, &localWorkSize, 0, NULL, NULL);
+		V_RETURN_CL(clErr, "Error executing Kernel m_SequentialAddressingKernel!");
+
+		new_N = m_N / pow(2, j);
+		m_hInput = new unsigned int[new_N];
+
+		clErr = clEnqueueReadBuffer(CommandQueue, m_dPongArray, CL_TRUE, 0, new_N * sizeof(unsigned), m_hInput, 0, NULL, NULL);
+		V_RETURN_CL(clErr, "Error reading data from device (m_dPongArray) to host (m_hInput)!");
+
+		globalWorkSize = new_N / 2;
+		if (localWorkSize > globalWorkSize)
+			localWorkSize = globalWorkSize / 2;
+	}
 }
 
 void CReductionTask::Reduction_Decomp(cl_context Context, cl_command_queue CommandQueue, size_t LocalWorkSize[3])

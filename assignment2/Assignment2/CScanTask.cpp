@@ -86,7 +86,7 @@ bool CScanTask::InitResources(cl_device_id Device, cl_context Context)
 	//load and compile kernels
 	string programCode;
 
-	CLUtil::LoadProgramSourceToMemory("Scan.cl", programCode);
+	CLUtil::LoadProgramSourceToMemory("../Assignment2/Scan.cl", programCode);
 	m_Program = CLUtil::BuildCLProgramFromMemory(Device, Context, programCode);
 	if(m_Program == nullptr) return false;
 

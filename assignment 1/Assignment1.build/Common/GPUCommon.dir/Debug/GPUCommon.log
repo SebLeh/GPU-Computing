@@ -1,4 +1,11 @@
-﻿  CLUtil.cpp
+﻿  Building Custom Rule C:/Users/Game on/GPU-Computing/assignment 1/Common/CMakeLists.txt
+  CMake does not need to re-run because C:/Users/Game on/GPU-Computing/assignment 1/Assignment1.build/Common/CMakeFiles/generate.stamp is up-to-date.
+  CAssignmentBase.cpp
 C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Tools\MSVC\14.11.25503\include\xlocale(314): warning C4530: C++-Handler verwendet, aber Entladesemantik ist nicht aktiviert. Geben Sie /EHsc an.
 C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Tools\MSVC\14.11.25503\include\type_traits(2342): warning C4577: "noexcept" wird ohne angegebenen Ausnahmebehandlungsmodus verwendet. Die Beendigung bei einer Ausnahme ist nicht sichergestellt. Geben Sie "/EHsc" an.
+  CLUtil.cpp
+C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Tools\MSVC\14.11.25503\include\xlocale(314): warning C4530: C++-Handler verwendet, aber Entladesemantik ist nicht aktiviert. Geben Sie /EHsc an.
+C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Tools\MSVC\14.11.25503\include\type_traits(2342): warning C4577: "noexcept" wird ohne angegebenen Ausnahmebehandlungsmodus verwendet. Die Beendigung bei einer Ausnahme ist nicht sichergestellt. Geben Sie "/EHsc" an.
+  CTimer.cpp
+  Code wird generiert...
   GPUCommon.vcxproj -> C:\Users\Game on\GPU-Computing\assignment 1\Assignment1.build\Common\Debug\GPUCommon.lib
