@@ -4,7 +4,15 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 __kernel void Scan_Naive(const __global uint* inArray, __global uint* outArray, uint N, uint offset) 
 {
-	// TO DO: Kernel implementation
+	int GID = get_global_id(0);
+	if (GID < offset)
+		outArray[GID] = inArray[GID];
+	else
+		outArray[GID] = inArray[GID] + inArray[GID - offset];
+	//if (GID < N - offset)
+	//	outArray[GID + offset] = inArray[GID] + inArray[GID + offset];
+	//else
+	//	outArray[GID] = inArray[GID];
 }
 
 

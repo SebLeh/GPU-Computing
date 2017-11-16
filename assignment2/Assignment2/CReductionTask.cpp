@@ -99,10 +99,10 @@ void CReductionTask::ComputeGPU(cl_context Context, cl_command_queue CommandQueu
 	ExecuteTask(Context, CommandQueue, LocalWorkSize, 2);
 	ExecuteTask(Context, CommandQueue, LocalWorkSize, 3);
 
-	//TestPerformance(Context, CommandQueue, LocalWorkSize, 0);
-	//TestPerformance(Context, CommandQueue, LocalWorkSize, 1);
-	//TestPerformance(Context, CommandQueue, LocalWorkSize, 2);
-	//TestPerformance(Context, CommandQueue, LocalWorkSize, 3);
+	TestPerformance(Context, CommandQueue, LocalWorkSize, 0);
+	TestPerformance(Context, CommandQueue, LocalWorkSize, 1);
+	TestPerformance(Context, CommandQueue, LocalWorkSize, 2);
+	TestPerformance(Context, CommandQueue, LocalWorkSize, 3);
 
 }
 
@@ -141,6 +141,7 @@ bool CReductionTask::ValidateResults()
 
 void CReductionTask::Reduction_InterleavedAddressing(cl_context Context, cl_command_queue CommandQueue, size_t LocalWorkSize[3])
 {
+	unsigned int *hOutput = new unsigned int[m_N];
 
 	cl_int clErr;
 
@@ -154,77 +155,180 @@ void CReductionTask::Reduction_InterleavedAddressing(cl_context Context, cl_comm
 		
 	//cout << "Executing Interleaved Addressing with " << globalWorkSize << " threads in " << nGroups << " groups of size " << LocalWorkSize[0] << endl;
 
-	for (unsigned int j = 1; j < nKernelCalls; j++)
+	clErr = clSetKernelArg(m_InterleavedAddressingKernel, 0, sizeof(cl_mem), (void*)&m_dPingArray);
+
+	for (unsigned int j = 1; j <= nKernelCalls; j++)
 	{
-		clErr = clSetKernelArg(m_InterleavedAddressingKernel, 0, sizeof(cl_mem), (void*)&m_dPingArray);
 		clErr = clSetKernelArg(m_InterleavedAddressingKernel, 1, sizeof(cl_uint), (void*)&offset);
 		clErr = clSetKernelArg(m_InterleavedAddressingKernel, 2, sizeof(cl_uint), (void*)&stride);
 		clErr = clSetKernelArg(m_InterleavedAddressingKernel, 3, sizeof(cl_uint), (void*)&m_N);
 		V_RETURN_CL(clErr, "Failed to set Kernel args: m_InterleavedAddressingKernel");
 
-		clErr = clEnqueueWriteBuffer(CommandQueue, m_dPingArray, CL_FALSE, 0, m_N * sizeof(unsigned), m_hInput, 0, NULL, NULL);
-		V_RETURN_CL(clErr, "Error copying data from host (m_hInput) to device (m_dPingArray)!");
+		//clErr = clEnqueueWriteBuffer(CommandQueue, m_dPingArray, CL_FALSE, 0, m_N * sizeof(unsigned), m_hInput, 0, NULL, NULL);
+		//V_RETURN_CL(clErr, "Error copying data from host (m_hInput) to device (m_dPingArray)!");
 
 		clErr = clEnqueueNDRangeKernel(CommandQueue, m_InterleavedAddressingKernel, 1, NULL, &globalWorkSize, &localWorkSize, 0, NULL, NULL);
 		V_RETURN_CL(clErr, "Error executing Kernel m_InterleavedAddressingKernel!");
 			
-		clErr = clEnqueueReadBuffer(CommandQueue, m_dPingArray, CL_TRUE, 0, m_N * sizeof(unsigned), m_hInput, 0, NULL, NULL);
-		V_RETURN_CL(clErr, "Error reading data from device (m_dPingArray) to host (m_hInput)!");
+		//clErr = clEnqueueReadBuffer(CommandQueue, m_dPingArray, CL_TRUE, 0, m_N * sizeof(unsigned), m_hOutput, 0, NULL, NULL);
+		//V_RETURN_CL(clErr, "Error reading data from device (m_dPingArray) to host (m_hOutput)!");
+
+		//cout << m_hOutput[0] << "|" << m_hOutput[1] << "|" << m_hOutput[2] << "|" << m_hOutput[3] << endl;			// for debugging
 
 		offset = pow(2, j);
 		stride = offset * 2;
 		globalWorkSize = m_N / stride;
-		//cout << j;		//for debugging
 		if (localWorkSize > globalWorkSize)
 			localWorkSize = globalWorkSize / 2;
 	}
+
+	//clErr = clEnqueueReadBuffer(CommandQueue, m_dPingArray, CL_TRUE, 0, m_N * sizeof(unsigned), hOutput, 0, NULL, NULL);
+	//V_RETURN_CL(clErr, "Error reading data from device (m_dPingArray) to host (hOutput)!");
+	//cout << endl << "First 100 elements with interleaved addressing" << endl;
+	//for (int j = 0; j < 100; j++)
+	//{
+	//	cout << hOutput[j] << "|";
+	//}
+	//cout << endl;
+
+	SAFE_DELETE_ARRAY(hOutput);
 
 }
 
 void CReductionTask::Reduction_SequentialAddressing(cl_context Context, cl_command_queue CommandQueue, size_t LocalWorkSize[3])
 {
-
-	// TO DO: Implement reduction with sequential addressing
+	unsigned int *hOutput = new unsigned int[m_N];
 
 	cl_int clErr;
 
-	unsigned int nKernelCalls = (unsigned)log2(m_N);				// for synchronizing, the kernel has to be called 24 = log2(1024*1024*16) times
-	size_t globalWorkSize = m_N / 2;			//number of threads; equals half the array size
+	unsigned int nKernelCalls = (unsigned)log2(m_N);		// for synchronizing, the kernel has to be called 24 = log2(1024*1024*16) times
+	unsigned int stride = m_N / 2;								// defines the stepsize for the second element of each addition
+	size_t globalWorkSize = m_N / 2;						// number of threads; equals half the array size
 	//size_t nGroups = globalWorkSize / LocalWorkSize[0];
 	size_t localWorkSize = LocalWorkSize[0];
-	unsigned int new_N = m_N;
 
-	//cout << "Executing Interleaved Addressing with " << globalWorkSize << " threads in " << nGroups << " groups of size " << LocalWorkSize[0] << endl;
+	//cout << endl;
+	//for (int j = 0; j < 100; j++)
+	//{
+	//	cout << m_hInput[j] << "|";
+	//}
+	//cout << endl;
 
-	for (unsigned int j = 1; j < nKernelCalls; j++)
+	clErr = clEnqueueWriteBuffer(CommandQueue, m_dPingArray, CL_TRUE, 0, m_N * sizeof(unsigned), m_hInput, 0, NULL, NULL);
+	V_RETURN_CL(clErr, "Error copying data from host (m_hInput) to device (m_dPingArray)!");
+
+	for (unsigned int j = 1; j <= nKernelCalls; j++)
 	{
-		clErr = clSetKernelArg(m_InterleavedAddressingKernel, 0, sizeof(cl_mem), (void*)&m_dPingArray);
-		clErr = clSetKernelArg(m_InterleavedAddressingKernel, 1, sizeof(cl_mem), (void*)&m_dPongArray);
-		clErr = clSetKernelArg(m_InterleavedAddressingKernel, 2, sizeof(cl_uint), (void*)&new_N);
-		V_RETURN_CL(clErr, "Failed to set Kernel args: m_InterleavedAddressingKernel");
-
-		clErr = clEnqueueWriteBuffer(CommandQueue, m_dPingArray, CL_FALSE, 0, new_N * sizeof(unsigned), m_hInput, 0, NULL, NULL);
-		V_RETURN_CL(clErr, "Error copying data from host (m_hInput) to device (m_dPingArray)!");
-		clErr = clEnqueueWriteBuffer(CommandQueue, m_dPongArray, CL_FALSE, 0, new_N * sizeof(unsigned), m_hInput, 0, NULL, NULL);
-		V_RETURN_CL(clErr, "Error copying data from host (m_hInput) to device (m_dPongArray)!");
-
+		clErr = clSetKernelArg(m_SequentialAddressingKernel, 0, sizeof(cl_mem), (void*)&m_dPingArray);
+		clErr = clSetKernelArg(m_SequentialAddressingKernel, 1, sizeof(cl_uint), (void*)&stride);
+		clErr = clSetKernelArg(m_SequentialAddressingKernel, 2, sizeof(cl_uint), (void*)&m_N);
+		V_RETURN_CL(clErr, "Failed to set Kernel args: m_SequentialAddressingKernel");
+		
 		clErr = clEnqueueNDRangeKernel(CommandQueue, m_SequentialAddressingKernel, 1, NULL, &globalWorkSize, &localWorkSize, 0, NULL, NULL);
 		V_RETURN_CL(clErr, "Error executing Kernel m_SequentialAddressingKernel!");
+				
+		//clErr = clEnqueueReadBuffer(CommandQueue, m_dPingArray, CL_TRUE, 0, m_N * sizeof(unsigned), m_hOutput, 0, NULL, NULL);
+		//V_RETURN_CL(clErr, "Error reading data from device (m_dPingArray) to host (m_hOutput)!");
 
-		new_N = m_N / pow(2, j);
-		m_hInput = new unsigned int[new_N];
+		//cout << m_hOutput[0] << "|" << m_hOutput[1] << "|" << m_hOutput[2] << "|" << m_hOutput[3] << endl;
 
-		clErr = clEnqueueReadBuffer(CommandQueue, m_dPongArray, CL_TRUE, 0, new_N * sizeof(unsigned), m_hInput, 0, NULL, NULL);
-		V_RETURN_CL(clErr, "Error reading data from device (m_dPongArray) to host (m_hInput)!");
-
-		globalWorkSize = new_N / 2;
+		stride = stride / 2;
+		globalWorkSize = globalWorkSize / 2;
 		if (localWorkSize > globalWorkSize)
 			localWorkSize = globalWorkSize / 2;
 	}
+
+	//clErr = clEnqueueReadBuffer(CommandQueue, m_dPingArray, CL_TRUE, 0, m_N * sizeof(unsigned), hOutput, 0, NULL, NULL);
+	//V_RETURN_CL(clErr, "Error reading data from device (m_dPingArray) to host (hOutput)!");
+	//cout << endl << "First 100 elements with sequential addressing" << endl;
+	//for (int j = 0; j < 100; j++)
+	//{
+	//	cout << hOutput[j] << "|";
+	//}
+	//cout << endl;
+
+	SAFE_DELETE_ARRAY(hOutput);
+
 }
 
 void CReductionTask::Reduction_Decomp(cl_context Context, cl_command_queue CommandQueue, size_t LocalWorkSize[3])
 {
+	unsigned int *hOutput = new unsigned int[m_N];		// for finding calculation errors
+
+	//unsigned int *localArray = new unsigned int[512];
+
+	cl_int clErr;
+	size_t gwSize = m_N;
+	size_t lwSize = 512;			//256
+	
+	//------------ first iteration to reduce 512 local elements;	here: 32768 local executions
+	//unsigned int nLocalExec = m_N / 512;
+
+	clErr = clSetKernelArg(m_DecompKernel, 0, sizeof(cl_mem), (void*)&m_dPingArray);
+	clErr = clSetKernelArg(m_DecompKernel, 1, sizeof(cl_mem), (void*)&m_dPongArray);
+	//clErr = clSetKernelArg(m_DecompKernel, 2, sizeof(cl_uint), (void*)&nLocalExec);
+	clErr = clSetKernelArg(m_DecompKernel, 2, sizeof(cl_uint) * 512, (void*)NULL);
+	V_RETURN_CL(clErr, "Failed to set Kernel args: m_DecompKernel");
+
+	clErr = clEnqueueNDRangeKernel(CommandQueue, m_DecompKernel, 1, NULL, &gwSize, &lwSize, 0, NULL, NULL);
+	V_RETURN_CL(clErr, "Error executing Kernel m_DecompKernel!");
+
+	swap(m_dPingArray, m_dPongArray);
+
+
+	//------------ second iteration to reduce 512 local elements	here: 64 local executions
+	//nLocalExec = nLocalExec / 512;			
+	gwSize = gwSize / 512;				// = 32768
+
+	clErr = clSetKernelArg(m_DecompKernel, 0, sizeof(cl_mem), (void*)&m_dPingArray);
+	clErr = clSetKernelArg(m_DecompKernel, 1, sizeof(cl_mem), (void*)&m_dPongArray);
+	//clErr = clSetKernelArg(m_DecompKernel, 2, sizeof(cl_uint), (void*)&nLocalExec);
+	clErr = clSetKernelArg(m_DecompKernel, 2, sizeof(cl_uint) * 512, (void*)NULL);
+	V_RETURN_CL(clErr, "Failed to set Kernel args: m_DecompKernel");
+
+	clErr = clEnqueueNDRangeKernel(CommandQueue, m_DecompKernel, 1, NULL, &gwSize, &lwSize, 0, NULL, NULL);
+	V_RETURN_CL(clErr, "Error executing Kernel m_DecompKernel!");
+
+	swap(m_dPingArray, m_dPongArray);
+
+	////now we should have 64 values left to be reduced
+	//clErr = clEnqueueReadBuffer(CommandQueue, m_dPingArray, CL_TRUE, 0, m_N * sizeof(unsigned), hOutput, 0, NULL, NULL);
+	//V_RETURN_CL(clErr, "Error reading data from device (m_dPingArray) to host (hOutput)!");
+	//cout << endl << "First 100 elements with sequential addressing" << endl;
+	//for (int j = 0; j < 100; j++)
+	//{
+	//	cout << hOutput[j] << "|";
+	//}
+	//cout << endl;
+
+	//----------- last iteration to reduce final 64 elements
+	//nLocalExec = nLocalExec / 512;
+	gwSize = 64;
+	lwSize = 64;
+
+	clErr = clSetKernelArg(m_DecompKernel, 0, sizeof(cl_mem), (void*)&m_dPingArray);
+	clErr = clSetKernelArg(m_DecompKernel, 1, sizeof(cl_mem), (void*)&m_dPongArray);
+	//clErr = clSetKernelArg(m_DecompKernel, 2, sizeof(cl_uint), (void*)&nLocalExec);
+	clErr = clSetKernelArg(m_DecompKernel, 2, sizeof(cl_uint) * 64, (void*)NULL);
+	V_RETURN_CL(clErr, "Failed to set Kernel args: m_DecompKernel");
+
+	clErr = clEnqueueNDRangeKernel(CommandQueue, m_DecompKernel, 1, NULL, &gwSize, &lwSize, 0, NULL, NULL);
+	V_RETURN_CL(clErr, "Error executing Kernel m_DecompKernel!");
+
+	swap(m_dPingArray, m_dPongArray);
+
+
+	////------ for finding calculation errors:
+	//clErr = clEnqueueReadBuffer(CommandQueue, m_dPingArray, CL_TRUE, 0, m_N * sizeof(unsigned), hOutput, 0, NULL, NULL);
+	//V_RETURN_CL(clErr, "Error reading data from device (m_dPingArray) to host (hOutput)!");
+	//cout << endl << "First 100 elements with decomposition" << endl;
+	//for (int j = 0; j < 100; j++)
+	//{
+	//	cout << hOutput[j] << "|";
+	//}
+	//cout << endl;
+
+	SAFE_DELETE_ARRAY(hOutput);
 
 	// TO DO: Implement reduction with kernel decomposition
 
@@ -237,7 +341,70 @@ void CReductionTask::Reduction_Decomp(cl_context Context, cl_command_queue Comma
 
 void CReductionTask::Reduction_DecompUnroll(cl_context Context, cl_command_queue CommandQueue, size_t LocalWorkSize[3])
 {
+	unsigned int *hOutput = new unsigned int[m_N];		// for finding calculation errors
 
+	cl_int clErr;
+	size_t gwSize = m_N;
+	size_t lwSize = 512;			//256
+
+	//------------ first iteration to reduce 512 local elements;	here: 32768 local executions
+	//unsigned int nLocalExec = m_N / 512;
+
+	clErr = clSetKernelArg(m_DecompKernel, 0, sizeof(cl_mem), (void*)&m_dPingArray);
+	clErr = clSetKernelArg(m_DecompKernel, 1, sizeof(cl_mem), (void*)&m_dPongArray);
+	//clErr = clSetKernelArg(m_DecompKernel, 2, sizeof(cl_uint), (void*)&nLocalExec);
+	clErr = clSetKernelArg(m_DecompKernel, 2, sizeof(cl_uint) * 512, (void*)NULL);
+	V_RETURN_CL(clErr, "Failed to set Kernel args: m_DecompKernel");
+
+	clErr = clEnqueueNDRangeKernel(CommandQueue, m_DecompKernel, 1, NULL, &gwSize, &lwSize, 0, NULL, NULL);
+	V_RETURN_CL(clErr, "Error executing Kernel m_DecompKernel!");
+
+	swap(m_dPingArray, m_dPongArray);
+
+
+	//------------ second iteration to reduce 512 local elements	here: 64 local executions
+	//nLocalExec = nLocalExec / 512;			
+	gwSize = gwSize / 512;				// = 32768
+
+	clErr = clSetKernelArg(m_DecompKernel, 0, sizeof(cl_mem), (void*)&m_dPingArray);
+	clErr = clSetKernelArg(m_DecompKernel, 1, sizeof(cl_mem), (void*)&m_dPongArray);
+	//clErr = clSetKernelArg(m_DecompKernel, 2, sizeof(cl_uint), (void*)&nLocalExec);
+	clErr = clSetKernelArg(m_DecompKernel, 2, sizeof(cl_uint) * 512, (void*)NULL);
+	V_RETURN_CL(clErr, "Failed to set Kernel args: m_DecompKernel");
+
+	clErr = clEnqueueNDRangeKernel(CommandQueue, m_DecompKernel, 1, NULL, &gwSize, &lwSize, 0, NULL, NULL);
+	V_RETURN_CL(clErr, "Error executing Kernel m_DecompKernel!");
+
+	swap(m_dPingArray, m_dPongArray);
+
+
+	//----------- last iteration to reduce final 64 elements
+	gwSize = 64;
+	lwSize = 64;
+
+	clErr = clSetKernelArg(m_DecompKernel, 0, sizeof(cl_mem), (void*)&m_dPingArray);
+	clErr = clSetKernelArg(m_DecompKernel, 1, sizeof(cl_mem), (void*)&m_dPongArray);
+	//clErr = clSetKernelArg(m_DecompKernel, 2, sizeof(cl_uint), (void*)&nLocalExec);
+	clErr = clSetKernelArg(m_DecompKernel, 2, sizeof(cl_uint) * 64, (void*)NULL);
+	V_RETURN_CL(clErr, "Failed to set Kernel args: m_DecompKernel");
+
+	clErr = clEnqueueNDRangeKernel(CommandQueue, m_DecompKernel, 1, NULL, &gwSize, &lwSize, 0, NULL, NULL);
+	V_RETURN_CL(clErr, "Error executing Kernel m_DecompKernel!");
+
+	swap(m_dPingArray, m_dPongArray);
+
+
+	////------ for finding calculation errors:
+	//clErr = clEnqueueReadBuffer(CommandQueue, m_dPingArray, CL_TRUE, 0, m_N * sizeof(unsigned), hOutput, 0, NULL, NULL);
+	//V_RETURN_CL(clErr, "Error reading data from device (m_dPingArray) to host (hOutput)!");
+	//cout << endl << "First 100 elements with decomposition unrolled" << endl;
+	//for (int j = 0; j < 100; j++)
+	//{
+	//	cout << hOutput[j] << "|";
+	//}
+	//cout << endl;
+
+	SAFE_DELETE_ARRAY(hOutput);
 	// TO DO: Implement reduction with loop unrolling
 
 	// NOTE: make sure that the final result is always in the variable m_dPingArray

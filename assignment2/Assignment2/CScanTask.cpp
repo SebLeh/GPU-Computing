@@ -62,8 +62,8 @@ bool CScanTask::InitResources(cl_device_id Device, cl_context Context)
 
 	//fill the array with some values
 	for(unsigned int i = 0; i < m_N; i++)
-		//m_hArray[i] = 1;			// Use this for debugging
-		m_hArray[i] = rand() & 15;
+		m_hArray[i] = 1;			// Use this for debugging
+		//m_hArray[i] = rand() & 15;
 
 	//device resources
 	// ping-pong buffers
@@ -137,8 +137,8 @@ void CScanTask::ComputeGPU(cl_context Context, cl_command_queue CommandQueue, si
 
 	cout << endl;
 
-	TestPerformance(Context, CommandQueue, LocalWorkSize, 0);
-	TestPerformance(Context, CommandQueue, LocalWorkSize, 1);
+	//TestPerformance(Context, CommandQueue, LocalWorkSize, 0);
+	//TestPerformance(Context, CommandQueue, LocalWorkSize, 1);
 
 	cout << endl;
 }
@@ -178,6 +178,41 @@ bool CScanTask::ValidateResults()
 
 void CScanTask::Scan_Naive(cl_context Context, cl_command_queue CommandQueue, size_t LocalWorkSize[3])
 {
+	//unsigned int *hOutput = new unsigned int[1024 * 1024 * 64];
+
+	cl_int clErr;
+
+	size_t gwSize = m_N;
+	size_t lwSize = LocalWorkSize[0];
+	unsigned int nKernelCalls = (unsigned)log2(m_N/2);		// 25 Kernel calls for 1024*1024*64 elements
+	unsigned int offset = 1;
+
+	for (unsigned int i = 1; i <= nKernelCalls; i++)
+	{
+		clErr = clSetKernelArg(m_ScanNaiveKernel, 0, sizeof(cl_mem), (void*)&m_dPingArray);
+		clErr = clSetKernelArg(m_ScanNaiveKernel, 1, sizeof(cl_mem), (void*)&m_dPongArray);
+		clErr = clSetKernelArg(m_ScanNaiveKernel, 2, sizeof(cl_uint), (void*)&m_N);
+		clErr = clSetKernelArg(m_ScanNaiveKernel, 3, sizeof(cl_uint), (void*)&offset);
+		V_RETURN_CL(clErr, "Failed to set Kernel args: m_ScanNaiveKernel");
+
+		clErr = clEnqueueNDRangeKernel(CommandQueue, m_ScanNaiveKernel, 1, NULL, &gwSize, &lwSize, 0, NULL, NULL);
+		V_RETURN_CL(clErr, "Error executing Kernel m_ScanNaiveKernel!");
+
+		
+		offset = pow(2, i);
+		swap(m_dPingArray, m_dPongArray);
+	}
+
+	//clErr = clEnqueueReadBuffer(CommandQueue, m_dPongArray, CL_TRUE, 0, m_N * sizeof(unsigned), hOutput, 0, NULL, NULL);
+	//V_RETURN_CL(clErr, "Error reading data from device (m_dPingArray) to host (m_hOutput)!");
+	//for (int j = 0; j < 100; j++)
+	//{
+	//	cout << hOutput[j] << "|";
+	//}
+
+	//SAFE_DELETE_ARRAY(hOutput);
+
+
 
 	// TO DO: Implement naive version of scan
 

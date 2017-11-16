@@ -1,3 +1,15 @@
 
+# Visual C++ chache files
+ipch/
+*.aps
+*.ncb
+*.opendb
+*.opensdf
+*.sdf
+*.chachfile
 
-.vs/
+*.zip
+*.7z
+
+Assignment1.build/
+Assignment2.build/
