@@ -178,7 +178,7 @@ bool CScanTask::ValidateResults()
 
 void CScanTask::Scan_Naive(cl_context Context, cl_command_queue CommandQueue, size_t LocalWorkSize[3])
 {
-	//unsigned int *hOutput = new unsigned int[1024 * 1024 * 64];
+	unsigned int *hOutput = new unsigned int[1024 * 1024 * 64];
 
 	cl_int clErr;
 
@@ -187,7 +187,7 @@ void CScanTask::Scan_Naive(cl_context Context, cl_command_queue CommandQueue, si
 	unsigned int nKernelCalls = (unsigned)log2(m_N/2);		// 25 Kernel calls for 1024*1024*64 elements
 	unsigned int offset = 1;
 
-	for (unsigned int i = 1; i <= nKernelCalls; i++)
+	for (unsigned int i = 1; i <= nKernelCalls + 1; i++)
 	{
 		clErr = clSetKernelArg(m_ScanNaiveKernel, 0, sizeof(cl_mem), (void*)&m_dPingArray);
 		clErr = clSetKernelArg(m_ScanNaiveKernel, 1, sizeof(cl_mem), (void*)&m_dPongArray);
@@ -197,34 +197,55 @@ void CScanTask::Scan_Naive(cl_context Context, cl_command_queue CommandQueue, si
 
 		clErr = clEnqueueNDRangeKernel(CommandQueue, m_ScanNaiveKernel, 1, NULL, &gwSize, &lwSize, 0, NULL, NULL);
 		V_RETURN_CL(clErr, "Error executing Kernel m_ScanNaiveKernel!");
-
-		
-		offset = pow(2, i);
+				
+		offset = offset * 2;
 		swap(m_dPingArray, m_dPongArray);
+
+		//clErr = clEnqueueReadBuffer(CommandQueue, m_dPingArray, CL_TRUE, 0, m_N * sizeof(unsigned), hOutput, 0, NULL, NULL);
+		//V_RETURN_CL(clErr, "Error reading data from device (m_dPingArray) to host (m_hOutput)!");
+		//cout << endl << "First 100 elements with naive scan" << endl;
+		//for (int j = 0; j < 100; j++)
+		//{
+		//	cout << hOutput[j] << "|";
+		//}
+		//cout << endl << "last element: " << hOutput[1024 * 1024 * 64 -1] << " iteration: " << i;
+
 	}
 
-	//clErr = clEnqueueReadBuffer(CommandQueue, m_dPongArray, CL_TRUE, 0, m_N * sizeof(unsigned), hOutput, 0, NULL, NULL);
+	//clErr = clEnqueueReadBuffer(CommandQueue, m_dPingArray, CL_TRUE, 0, m_N * sizeof(unsigned), hOutput, 0, NULL, NULL);
 	//V_RETURN_CL(clErr, "Error reading data from device (m_dPingArray) to host (m_hOutput)!");
+	//cout << endl << "First 100 elements with naive scan" << endl;
 	//for (int j = 0; j < 100; j++)
 	//{
 	//	cout << hOutput[j] << "|";
 	//}
+	//cout << endl << "last element: " << hOutput[1024 * 1024 * 64 -1] << " iteration: " << i;
 
-	//SAFE_DELETE_ARRAY(hOutput);
-
-
-
-	// TO DO: Implement naive version of scan
-
-	// NOTE: make sure that the final result is always in the variable m_dPingArray
-	// as this is read back for the correctness check
-	// (CReductionTask::ValidateTask)
-	//
-	// hint: for example, you can use swap(m_dPingArray, m_dPongArray) at the end of your for loop...
+	SAFE_DELETE_ARRAY(hOutput);
 }
 
 void CScanTask::Scan_WorkEfficient(cl_context Context, cl_command_queue CommandQueue, size_t LocalWorkSize[3])
 {
+	unsigned int *testOutput = new unsigned int[512];
+
+	unsigned int *testInput = new unsigned int[512];
+	for (unsigned int i = 0; i < 512; i++)
+		testInput[i] = 1;
+
+	cl_int clErr;
+	size_t gwSize = 512;
+	size_t lwSize = 512;
+
+	clErr = clSetKernelArg(m_ScanWorkEfficientKernel, 0, sizeof(cl_mem), (void*)&m_dPingArray);
+	clErr = clSetKernelArg(m_ScanWorkEfficientKernel, 1, sizeof(cl_mem), (void*)&m_dPongArray);
+	clErr = clSetKernelArg(m_ScanWorkEfficientKernel, 2, sizeof(cl_uint) * 512, (void*)NULL);
+	V_RETURN_CL(clErr, "Failed to set Kernel args: m_ScanWorkEfficientKernel");
+
+	clErr = clEnqueueNDRangeKernel(CommandQueue, m_ScanWorkEfficientKernel, 1, NULL, &gwSize, &lwSize, 0, NULL, NULL);
+	V_RETURN_CL(clErr, "Error executing Kernel m_ScanWorkEfficientKernel!");
+
+	SAFE_DELETE_ARRAY(testOutput);
+	SAFE_DELETE_ARRAY(testInput);
 
 	// TO DO: Implement efficient version of scan
 

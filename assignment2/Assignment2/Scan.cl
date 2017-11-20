@@ -9,10 +9,6 @@ __kernel void Scan_Naive(const __global uint* inArray, __global uint* outArray, 
 		outArray[GID] = inArray[GID];
 	else
 		outArray[GID] = inArray[GID] + inArray[GID - offset];
-	//if (GID < N - offset)
-	//	outArray[GID + offset] = inArray[GID] + inArray[GID + offset];
-	//else
-	//	outArray[GID] = inArray[GID];
 }
 
 
@@ -35,6 +31,15 @@ __kernel void Scan_Naive(const __global uint* inArray, __global uint* outArray, 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 __kernel void Scan_WorkEfficient(__global uint* array, __global uint* higherLevelArray, __local uint* localBlock) 
 {
+	int LID = get_local_id(0);
+	int grp = get_group_id(0);
+	int lSize = get_local_size(0);
+
+	if (LID < get_local_size(0))
+	{
+		// writing 512 global values to local memory
+		localBlock[LID] = array[LID + grp * lSize];
+	}
 	// TO DO: Kernel implementation
 }
 

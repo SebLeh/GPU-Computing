@@ -41,8 +41,8 @@ bool CReductionTask::InitResources(cl_device_id Device, cl_context Context)
 
 	//fill the array with some values
 	for(unsigned int i = 0; i < m_N; i++) 
-		m_hInput[i] = 1;			// Use this for debugging
-		//m_hInput[i] = rand() & 15;
+		//m_hInput[i] = 1;			// Use this for debugging
+		m_hInput[i] = rand() & 15;
 
 	//device resources
 	cl_int clError, clError2;
@@ -99,10 +99,10 @@ void CReductionTask::ComputeGPU(cl_context Context, cl_command_queue CommandQueu
 	ExecuteTask(Context, CommandQueue, LocalWorkSize, 2);
 	ExecuteTask(Context, CommandQueue, LocalWorkSize, 3);
 
-	TestPerformance(Context, CommandQueue, LocalWorkSize, 0);
-	TestPerformance(Context, CommandQueue, LocalWorkSize, 1);
-	TestPerformance(Context, CommandQueue, LocalWorkSize, 2);
-	TestPerformance(Context, CommandQueue, LocalWorkSize, 3);
+	//TestPerformance(Context, CommandQueue, LocalWorkSize, 0);
+	//TestPerformance(Context, CommandQueue, LocalWorkSize, 1);
+	//TestPerformance(Context, CommandQueue, LocalWorkSize, 2);
+	//TestPerformance(Context, CommandQueue, LocalWorkSize, 3);
 
 }
 
@@ -341,6 +341,8 @@ void CReductionTask::Reduction_Decomp(cl_context Context, cl_command_queue Comma
 
 void CReductionTask::Reduction_DecompUnroll(cl_context Context, cl_command_queue CommandQueue, size_t LocalWorkSize[3])
 {
+
+	unsigned int warpSize = CL_DEVICE_WARP_SIZE_NV;
 	unsigned int *hOutput = new unsigned int[m_N];		// for finding calculation errors
 
 	cl_int clErr;
@@ -350,14 +352,13 @@ void CReductionTask::Reduction_DecompUnroll(cl_context Context, cl_command_queue
 	//------------ first iteration to reduce 512 local elements;	here: 32768 local executions
 	//unsigned int nLocalExec = m_N / 512;
 
-	clErr = clSetKernelArg(m_DecompKernel, 0, sizeof(cl_mem), (void*)&m_dPingArray);
-	clErr = clSetKernelArg(m_DecompKernel, 1, sizeof(cl_mem), (void*)&m_dPongArray);
-	//clErr = clSetKernelArg(m_DecompKernel, 2, sizeof(cl_uint), (void*)&nLocalExec);
-	clErr = clSetKernelArg(m_DecompKernel, 2, sizeof(cl_uint) * 512, (void*)NULL);
-	V_RETURN_CL(clErr, "Failed to set Kernel args: m_DecompKernel");
+	clErr = clSetKernelArg(m_DecompUnrollKernel, 0, sizeof(cl_mem), (void*)&m_dPingArray);
+	clErr = clSetKernelArg(m_DecompUnrollKernel, 1, sizeof(cl_mem), (void*)&m_dPongArray);
+	clErr = clSetKernelArg(m_DecompUnrollKernel, 2, sizeof(cl_uint) * 512, (void*)NULL);
+	V_RETURN_CL(clErr, "Failed to set Kernel args: m_DecompUnrollKernel");
 
-	clErr = clEnqueueNDRangeKernel(CommandQueue, m_DecompKernel, 1, NULL, &gwSize, &lwSize, 0, NULL, NULL);
-	V_RETURN_CL(clErr, "Error executing Kernel m_DecompKernel!");
+	clErr = clEnqueueNDRangeKernel(CommandQueue, m_DecompUnrollKernel, 1, NULL, &gwSize, &lwSize, 0, NULL, NULL);
+	V_RETURN_CL(clErr, "Error executing Kernel m_DecompUnrollKernel!");
 
 	swap(m_dPingArray, m_dPongArray);
 
@@ -366,14 +367,13 @@ void CReductionTask::Reduction_DecompUnroll(cl_context Context, cl_command_queue
 	//nLocalExec = nLocalExec / 512;			
 	gwSize = gwSize / 512;				// = 32768
 
-	clErr = clSetKernelArg(m_DecompKernel, 0, sizeof(cl_mem), (void*)&m_dPingArray);
-	clErr = clSetKernelArg(m_DecompKernel, 1, sizeof(cl_mem), (void*)&m_dPongArray);
-	//clErr = clSetKernelArg(m_DecompKernel, 2, sizeof(cl_uint), (void*)&nLocalExec);
-	clErr = clSetKernelArg(m_DecompKernel, 2, sizeof(cl_uint) * 512, (void*)NULL);
-	V_RETURN_CL(clErr, "Failed to set Kernel args: m_DecompKernel");
+	clErr = clSetKernelArg(m_DecompUnrollKernel, 0, sizeof(cl_mem), (void*)&m_dPingArray);
+	clErr = clSetKernelArg(m_DecompUnrollKernel, 1, sizeof(cl_mem), (void*)&m_dPongArray);
+	clErr = clSetKernelArg(m_DecompUnrollKernel, 2, sizeof(cl_uint) * 512, (void*)NULL);
+	V_RETURN_CL(clErr, "Failed to set Kernel args: m_DecompUnrollKernel");
 
-	clErr = clEnqueueNDRangeKernel(CommandQueue, m_DecompKernel, 1, NULL, &gwSize, &lwSize, 0, NULL, NULL);
-	V_RETURN_CL(clErr, "Error executing Kernel m_DecompKernel!");
+	clErr = clEnqueueNDRangeKernel(CommandQueue, m_DecompUnrollKernel, 1, NULL, &gwSize, &lwSize, 0, NULL, NULL);
+	V_RETURN_CL(clErr, "Error executing Kernel m_DecompUnrollKernel!");
 
 	swap(m_dPingArray, m_dPongArray);
 
@@ -382,14 +382,13 @@ void CReductionTask::Reduction_DecompUnroll(cl_context Context, cl_command_queue
 	gwSize = 64;
 	lwSize = 64;
 
-	clErr = clSetKernelArg(m_DecompKernel, 0, sizeof(cl_mem), (void*)&m_dPingArray);
-	clErr = clSetKernelArg(m_DecompKernel, 1, sizeof(cl_mem), (void*)&m_dPongArray);
-	//clErr = clSetKernelArg(m_DecompKernel, 2, sizeof(cl_uint), (void*)&nLocalExec);
-	clErr = clSetKernelArg(m_DecompKernel, 2, sizeof(cl_uint) * 64, (void*)NULL);
-	V_RETURN_CL(clErr, "Failed to set Kernel args: m_DecompKernel");
+	clErr = clSetKernelArg(m_DecompUnrollKernel, 0, sizeof(cl_mem), (void*)&m_dPingArray);
+	clErr = clSetKernelArg(m_DecompUnrollKernel, 1, sizeof(cl_mem), (void*)&m_dPongArray);
+	clErr = clSetKernelArg(m_DecompUnrollKernel, 2, sizeof(cl_uint) * 64, (void*)NULL);
+	V_RETURN_CL(clErr, "Failed to set Kernel args: m_DecompUnrollKernel");
 
-	clErr = clEnqueueNDRangeKernel(CommandQueue, m_DecompKernel, 1, NULL, &gwSize, &lwSize, 0, NULL, NULL);
-	V_RETURN_CL(clErr, "Error executing Kernel m_DecompKernel!");
+	clErr = clEnqueueNDRangeKernel(CommandQueue, m_DecompUnrollKernel, 1, NULL, &gwSize, &lwSize, 0, NULL, NULL);
+	V_RETURN_CL(clErr, "Error executing Kernel m_DecompUnrollKernel!");
 
 	swap(m_dPingArray, m_dPongArray);
 

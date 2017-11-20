@@ -11,5 +11,6 @@ ipch/
 *.zip
 *.7z
 
-Assignment1.build/
-Assignment2.build/
+**/Assignment1.build/
+**/Assignment2.build/
+**/Assignment3.build/
