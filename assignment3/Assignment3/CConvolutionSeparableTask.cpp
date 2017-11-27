@@ -48,7 +48,7 @@ CConvolutionSeparableTask::CConvolutionSeparableTask(
 	m_hCPUWorkingBuffer = nullptr;
 
 	m_FileNamePostfix = "Separable_" + OutFileName;
-	m_ProgramName = "ConvolutionSeparable.cl";
+	m_ProgramName = "../Assignment3/ConvolutionSeparable.cl";
 }
 
 CConvolutionSeparableTask::~CConvolutionSeparableTask()

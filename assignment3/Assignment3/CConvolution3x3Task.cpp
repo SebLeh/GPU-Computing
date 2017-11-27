@@ -55,6 +55,8 @@ bool CConvolution3x3Task::InitResources(cl_device_id Device, cl_context Context)
 	if(!CConvolutionTaskBase::InitResources(Device, Context))
 		return false;
 
+	m_Device_ID = Device;
+
 	//we can init the kernel buffer during creation as its contents will not change
 	cl_int clError;
 	cl_float kernelConstants[11];
@@ -70,7 +72,7 @@ bool CConvolution3x3Task::InitResources(cl_device_id Device, cl_context Context)
 
 	string programCode;
 
-	CLUtil::LoadProgramSourceToMemory("Convolution3x3.cl", programCode);
+	CLUtil::LoadProgramSourceToMemory("../Assignment3/Convolution3x3.cl", programCode);
 	m_Program = CLUtil::BuildCLProgramFromMemory(Device, Context, programCode);
 	if(m_Program == nullptr) return false;
 
@@ -189,11 +191,21 @@ double CConvolution3x3Task::ConvolutionChannelGPU(unsigned int Channel, cl_conte
 												cl_command_queue CommandQueue, int NIterations)
 {
 	size_t globalWorkSize[2] = {CLUtil::GetGlobalWorkSize(m_Width, m_TileSize[0]), CLUtil::GetGlobalWorkSize(m_Height, m_TileSize[1])};
-	
+
+	//size_t bufferSize;
+	//cl_ulong localMemorySize;		//49152 Byte -> store 12288 floats -> 110 * 110 is maximum size of tiles for local memory
+	//clGetDeviceInfo(m_Device_ID, CL_DEVICE_LOCAL_MEM_SIZE, sizeof(cl_ulong), &localMemorySize, &bufferSize);
+
+	unsigned int overWidth = m_Width % m_TileSize[0];
+	unsigned int overHeight = m_Height % m_TileSize[1];
+
 	cl_int clErr;
 	clErr  = clSetKernelArg(m_ConvolutionKernel, 0, sizeof(cl_mem), (void*)&m_dResultChannels[Channel]);
 	clErr |= clSetKernelArg(m_ConvolutionKernel, 1, sizeof(cl_mem), (void*)&m_dSourceChannels[Channel]);
 	V_RETURN_0_CL(clErr, "Error setting kernel arguments!");
+
+	clErr = clEnqueueNDRangeKernel(CommandQueue, m_ConvolutionKernel, 2, NULL, globalWorkSize, m_TileSize, 0, NULL, NULL);
+	V_RETURN_0_CL(clErr, "Error executing kernel m_ComvolutionKernel!");
 
 	return CLUtil::ProfileKernel(CommandQueue, m_ConvolutionKernel, 2, globalWorkSize, m_TileSize, NIterations);
 }

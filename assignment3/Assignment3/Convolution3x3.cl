@@ -39,6 +39,7 @@ void Convolution(
 	// Load halo regions from d_Src (edges and corners separately), check for image bounds!
 
 	// Sync threads
+	barrier(CLK_LOCAL_MEM_FENCE);
 
 	// Perform the convolution and store the convolved signal to d_Dst.
 }

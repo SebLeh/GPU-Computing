@@ -67,6 +67,8 @@ protected:
 	cl_program		m_Program = nullptr;
 	cl_kernel		m_ConvolutionKernel = nullptr;
 
+	cl_device_id	m_Device_ID;
+
 };
 
 #endif // _CCONVOLUTION_3X3_TASK_H

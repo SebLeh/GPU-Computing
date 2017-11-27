@@ -16,6 +16,9 @@ GPU Computing / GPGPU Praktikum source code.
 #include <cstdint>
 #include <vector>
 
+
+#include <direct.h>
+
 using namespace std;
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -33,6 +36,9 @@ CConvolutionTaskBase::~CConvolutionTaskBase()
 
 bool CConvolutionTaskBase::InitResources(cl_device_id , cl_context Context)
 {
+	char cCurrentPath[FILENAME_MAX];
+	_getcwd(cCurrentPath, sizeof(cCurrentPath));
+
 	PFM inputPfm;
 	if (!inputPfm.LoadRGB(m_FileName.c_str())) {
 		cerr<<"Error loading file: " << m_FileName.c_str() << "." << endl;

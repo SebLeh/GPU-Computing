@@ -35,7 +35,7 @@ CConvolutionBilateralTask::CConvolutionBilateralTask(
 	, m_DepthFileName(DepthFileName)
 {
 	m_FileNamePostfix = "Bilateral";
-	m_ProgramName = "ConvolutionBilateral.cl";
+	m_ProgramName = "../Assignment3/ConvolutionBilateral.cl";
 }
 
 CConvolutionBilateralTask::~CConvolutionBilateralTask()
